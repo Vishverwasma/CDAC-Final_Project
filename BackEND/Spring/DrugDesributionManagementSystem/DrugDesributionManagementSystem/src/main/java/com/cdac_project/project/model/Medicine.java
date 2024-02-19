@@ -1,0 +1,112 @@
+package com.cdac_project.project.model;
+
+import java.time.LocalDate;
+import java.util.*;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = "medicine_db", uniqueConstraints = @UniqueConstraint(columnNames = "Medicine_Name"))
+public class Medicine {
+
+
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "Medicine_id")
+    private Long id;
+
+    @Column(name = "Medicine_name")
+    private String name;
+
+    @ManyToOne
+    @JoinColumn(name = "Category_id")
+    private MedicineCategory categoryId;
+    
+    @Column(name = "Medicine_Quantity")
+    private Long quantity;
+
+    @Column(name = "Manufacture_date")
+    private LocalDate manufactureDate;
+
+    @Column(name = "Unit_Price")
+    private Long unitPrice;
+    
+    @ManyToOne
+    private Order order;
+
+	public Medicine() {
+		super();
+	}
+
+	
+
+	public Medicine(Long id, String name, MedicineCategory categoryId, Long quantity, LocalDate manufactureDate,
+			Long unitPrice) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.categoryId = categoryId;
+		this.quantity = quantity;
+		this.manufactureDate = manufactureDate;
+		this.unitPrice = unitPrice;
+	}
+
+
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	
+
+	public MedicineCategory getCategoryId() {
+		return categoryId;
+	}
+
+
+
+	public void setCategory(MedicineCategory categoryId) {
+		this.categoryId = categoryId;
+	}
+
+
+
+	public Long getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(Long quantity) {
+		this.quantity = quantity;
+	}
+
+	public LocalDate getManufactureDate() {
+		return manufactureDate;
+	}
+
+	public void setManufactureDate(LocalDate manufactureDate) {
+		this.manufactureDate = manufactureDate;
+	}
+
+	public Long getUnitPrice() {
+		return unitPrice;
+	}
+
+	public void setUnitPrice(Long unitPrice) {
+		this.unitPrice = unitPrice;
+	}
+	 
+	
+	
+}
