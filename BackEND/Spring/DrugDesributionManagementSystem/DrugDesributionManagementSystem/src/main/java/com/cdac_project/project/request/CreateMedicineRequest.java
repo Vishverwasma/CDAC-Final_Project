@@ -27,12 +27,7 @@ public class CreateMedicineRequest {
 		ManufactureDate = manufacture_Date;
 		UnitPrice = unit_Price;
 	}
-//	public int getMedicine_id() {
-//		return Medicine_id;
-//	}
-//	public void setMedicine_id(int medicine_id) {
-//		Medicine_id = medicine_id;
-//	}
+
 	public String getMedicinename() {
 		return Medicinename;
 	}

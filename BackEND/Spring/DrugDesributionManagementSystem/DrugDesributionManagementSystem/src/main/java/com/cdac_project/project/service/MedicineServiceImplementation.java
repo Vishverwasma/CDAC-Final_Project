@@ -24,17 +24,15 @@ import com.cdac_project.project.request.CreateMedicineRequest;
 public class MedicineServiceImplementation implements MedicineService{
 
 	private MedicineRepository medicineRepository;
-	private PharmacistService phramacistService;
 	private MedicineCategoryRepository categoryRepository; 	
 	
 	public MedicineServiceImplementation() {}
 	
 	
 	public MedicineServiceImplementation(MedicineRepository medicineRepository,
-			PharmacistService phramacistService, MedicineCategoryRepository categoryRepository) {
+			MedicineCategoryRepository categoryRepository) {
 		super();
 		this.medicineRepository = medicineRepository;
-		this.phramacistService = phramacistService;
 		this.categoryRepository = categoryRepository;
 	}
 
@@ -57,25 +55,21 @@ public class MedicineServiceImplementation implements MedicineService{
 		medicine.setManufactureDate(req.getManufactureDate());
 		medicine.setUnitPrice(req.getUnitPrice());
 		
+		//return medicineRepository.save(medicine);
+		//  or
 		Medicine savedMedicine = medicineRepository.save(medicine);
 		return savedMedicine;
 	}
 
 	@Override
 	public String deleteMedicine(int Medicine_ID) throws MedicineException {
-		// TODO Auto-generated method stub
-		
-		Medicine medicine= findMedicineById(Medicine_ID);
-		
-		medicineRepository.delete(medicine);
-		
-		return "Medicine Deleted SuccessFully ! ";
+		 Medicine medicine = findMedicineById(Medicine_ID);
+	     medicineRepository.delete(medicine);
+	     return "Medicine Deleted Successfully!";
 	}
 
 	@Override
 	public Medicine updateMedicine(int Medicine_ID, Medicine req) throws MedicineException {
-		// TODO Auto-generated method stub
-
 		Medicine medicine= findMedicineById(Medicine_ID);
 		if(req.getQuantity()!=0) {
 			medicine.setQuantity(req.getQuantity());
@@ -95,17 +89,15 @@ public class MedicineServiceImplementation implements MedicineService{
 
 
 	@Override
-	public List<Medicine> findMedicineByCategoryId(int Category_id) throws Exception{
+	public List<Medicine> findMedicineByCategory(int Category_id) throws Exception{
 		 List<Medicine> medicines = medicineRepository.findAll();
-
-		    List<Medicine> filteredMedicines = medicines.stream()
-		            .filter(medicine -> medicine.getCategoryId().getCategoryid() == Category_id)
-		            .collect(Collectors.toList());
-
-		    if (!filteredMedicines.isEmpty()) {
-		        return filteredMedicines;
-		    }
-		    throw new MedicineException("Medicine not Found with Category-ID : " + Category_id);
+	     List<Medicine> filteredMedicines = medicines.stream()
+	                .filter(medicine -> medicine.getCategoryId().getCategoryid() == Category_id)
+	                .collect(Collectors.toList());
+	        if (!filteredMedicines.isEmpty()) {
+	            return filteredMedicines;
+	        }
+	        throw new MedicineException("Medicine not Found with Category-ID : " + Category_id);
 	}
 
 
@@ -114,9 +106,16 @@ public class MedicineServiceImplementation implements MedicineService{
 			LocalDate ManufactureDate, int UnitPrice) throws MedicineException {
 		// TODO Auto-generated method stub
 		 Pageable pageable = PageRequest.of(0, 10); // You can change the page size and number as needed
-		    Page<Medicine> medicines = medicineRepository.findAll(pageable);
+		 Page<Medicine> medicines = medicineRepository.findAll(pageable);
 
 		    return medicines;
+	}
+
+
+	@Override
+	public Page<Medicine> searchMedicines(MedicineSearchCriteria criteria) {
+		// TODO Auto-generated method stub
+		return medicineRepository.findAll(PageRequest.of(0, 10));
 	}
 
 }

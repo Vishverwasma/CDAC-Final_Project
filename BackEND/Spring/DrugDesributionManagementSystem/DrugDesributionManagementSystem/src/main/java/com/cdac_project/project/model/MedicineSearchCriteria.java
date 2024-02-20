@@ -2,30 +2,19 @@ package com.cdac_project.project.model;
 
 import java.time.LocalDate;
 
+import lombok.Getter;
+import lombok.Setter;
+
 public class MedicineSearchCriteria {
     private String medicineName;
     private int categoryId;
-    private Integer minQuantity;
-    private Integer maxQuantity;
-    private Double minPrice;
-    private Double maxPrice;
-    private LocalDate minManufactureDate;
-    private LocalDate maxManufactureDate;
+    private Integer Quantity;
+    private Integer Price;
+    private LocalDate ManufactureDate;
 	public MedicineSearchCriteria() {
 		super();
 	}
-	public MedicineSearchCriteria(String medicineName, int categoryId, Integer minQuantity, Integer maxQuantity,
-			Double minPrice, Double maxPrice, LocalDate minManufactureDate, LocalDate maxManufactureDate) {
-		super();
-		this.medicineName = medicineName;
-		this.categoryId = categoryId;
-		this.minQuantity = minQuantity;
-		this.maxQuantity = maxQuantity;
-		this.minPrice = minPrice;
-		this.maxPrice = maxPrice;
-		this.minManufactureDate = minManufactureDate;
-		this.maxManufactureDate = maxManufactureDate;
-	}
+    // Getters and setters...
 	public String getMedicineName() {
 		return medicineName;
 	}
@@ -38,44 +27,33 @@ public class MedicineSearchCriteria {
 	public void setCategoryId(int categoryId) {
 		this.categoryId = categoryId;
 	}
-	public Integer getMinQuantity() {
-		return minQuantity;
+	public Integer getQuantity() {
+		return Quantity;
 	}
-	public void setMinQuantity(Integer minQuantity) {
-		this.minQuantity = minQuantity;
+	public void setQuantity(Integer quantity) {
+		Quantity = quantity;
 	}
-	public Integer getMaxQuantity() {
-		return maxQuantity;
+	public Integer getPrice() {
+		return Price;
 	}
-	public void setMaxQuantity(Integer maxQuantity) {
-		this.maxQuantity = maxQuantity;
+	public void setPrice(Integer price) {
+		Price = price;
 	}
-	public Double getMinPrice() {
-		return minPrice;
+	public LocalDate getManufactureDate() {
+		return ManufactureDate;
 	}
-	public void setMinPrice(Double minPrice) {
-		this.minPrice = minPrice;
+	public void setManufactureDate(LocalDate manufactureDate) {
+		ManufactureDate = manufactureDate;
 	}
-	public Double getMaxPrice() {
-		return maxPrice;
+	public MedicineSearchCriteria(String medicineName, int categoryId, Integer quantity, Integer price,
+			LocalDate manufactureDate) {
+		super();
+		this.medicineName = medicineName;
+		this.categoryId = categoryId;
+		Quantity = quantity;
+		Price = price;
+		ManufactureDate = manufactureDate;
 	}
-	public void setMaxPrice(Double maxPrice) {
-		this.maxPrice = maxPrice;
-	}
-	public LocalDate getMinManufactureDate() {
-		return minManufactureDate;
-	}
-	public void setMinManufactureDate(LocalDate minManufactureDate) {
-		this.minManufactureDate = minManufactureDate;
-	}
-	public LocalDate getMaxManufactureDate() {
-		return maxManufactureDate;
-	}
-	public void setMaxManufactureDate(LocalDate maxManufactureDate) {
-		this.maxManufactureDate = maxManufactureDate;
-	}
-
-    // Getters and setters...
     
     
 }

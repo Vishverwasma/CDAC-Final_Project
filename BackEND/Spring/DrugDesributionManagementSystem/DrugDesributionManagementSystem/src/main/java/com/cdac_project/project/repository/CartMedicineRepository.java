@@ -15,11 +15,18 @@ public interface CartMedicineRepository extends JpaRepository<CartMedicine, Inte
 	//CartMedicine isCartMedicineExist(Cart cart, Medicine medicine, int id);
 	
 	boolean existsByCartAndMedicineAndId(Cart cart, Medicine medicine, int id);
-	
-//	@Query("SELECT ci FROM CartMedicine ci WHERE ci.cart_id = :cart AND ci.medicine_id = :medicine AND ci.pharmacist_id = :pharmacistId AND ci.quantity = :quantity")
-//	public CartMedicine isCartMedicineExist(@Param("cart") Cart cart, @Param("medicine")Medicine medicine,@Param("pharmacistId")int pharmacistId,@Param("quantity")int quantity);
-	
-	CartMedicine isCartMedicineExist(Cart cart, Medicine medicine, int pharmacistId);
+	 
+	 @Query("SELECT cm FROM CartMedicine cm \r\n"
+	 		+ "WHERE cm.cart.id = :cartId \r\n"
+	 		+ "AND cm.medicine.id = :medicineId \r\n"
+	 		+ "AND cm.pharmacistId = :pharmacistId\r\n"
+	 		+ "")
+	    CartMedicine isCartMedicineExist(@Param("cart") Cart cart, @Param("medicine") Medicine medicine, @Param("pid") int pid);
 
+//	@Query("SELECT cm FROM CartMedicine cm WHERE cm.cart.id = :cartId AND cm.medicine.id = :medicineId AND cm.pharmacist.id = :pharmacistId")
+//	CartMedicine isCartMedicineExist(@Param("cartId") Long cartId, @Param("medicineId") Long medicineId, @Param("pharmacistId") Long pharmacistId);
+
+	
+	    CartMedicine findByCartAndMedicineAndPharmacistId(Cart cart, Medicine medicine, int pharmacistId);
 	
 }

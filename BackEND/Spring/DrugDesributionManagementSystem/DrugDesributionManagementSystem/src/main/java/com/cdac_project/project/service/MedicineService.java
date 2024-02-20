@@ -19,7 +19,8 @@ public interface MedicineService {
 	public String deleteMedicine(int Medicine_ID)throws MedicineException;
 	public Medicine updateMedicine(int Medicine_ID,Medicine req) throws MedicineException;
 	public Medicine findMedicineById(int id) throws MedicineException;
-	public List<Medicine> findMedicineByCategoryId(int Category_id) throws Exception;
+	public List<Medicine> findMedicineByCategory(int Category_id) throws Exception;
 	public Page<Medicine> getAllMedicine(int Medicineid,String MedicineName ,int CategoryId ,int Quantity, LocalDate ManufactureDate , int UnitPrice) throws MedicineException;
-	
+
+    public Page<Medicine> searchMedicines(MedicineSearchCriteria criteria);
 }
