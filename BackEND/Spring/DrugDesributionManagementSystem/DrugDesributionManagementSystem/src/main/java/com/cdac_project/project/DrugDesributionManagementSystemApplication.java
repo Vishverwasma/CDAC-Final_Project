@@ -6,8 +6,8 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"com.cdac_project.project"}) // Include the package containing Cart class
-@EnableJpaRepositories(basePackages = {"com.cdac_project.project.repository"}) // Include the package containing repositories
+//@ComponentScan(basePackages = {"com.cdac_project.project.service", "other.packages"}) // Include the package containing Cart class
+//@EnableJpaRepositories(basePackages = {"com.cdac_project.project.repository"}) // Include the package containing repositories
 public class DrugDesributionManagementSystemApplication {
 
 	public static void main(String[] args) {

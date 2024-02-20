@@ -10,7 +10,7 @@ public class Distributor {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Distributor_ID")
-    private Long id;
+    private int id;
 
     @Column(name = "distributor_name")
     private String name;
@@ -25,7 +25,7 @@ public class Distributor {
 		super();
 	}
 
-	public Distributor(Long id, String name, String email, String password) {
+	public Distributor(int id, String name, String email, String password) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -33,11 +33,11 @@ public class Distributor {
 		this.password = password;
 	}
 
-	public Long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

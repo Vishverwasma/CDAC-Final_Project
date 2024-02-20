@@ -4,12 +4,12 @@ import java.time.LocalDate;
 
 public class CreateMedicineRequest {
 
-	// private Long Medicine_id;
+	// private int Medicine_id;
 	 private String Medicinename;
-	 private Long Categoryid;
-	 private Long MedicineQuantity;
+	 private int Categoryid;
+	 private int MedicineQuantity;
 	 private LocalDate ManufactureDate;
-	 private Long UnitPrice;
+	 private int UnitPrice;
 	 
 	 
 	 
@@ -17,8 +17,8 @@ public class CreateMedicineRequest {
 	public CreateMedicineRequest() {
 		super();
 	}
-	public CreateMedicineRequest( String medicine_name, Long category_id, Long medicine_Quantity,
-			LocalDate manufacture_Date, Long unit_Price) {
+	public CreateMedicineRequest( String medicine_name, int category_id, int medicine_Quantity,
+			LocalDate manufacture_Date, int unit_Price) {
 		super();
 		//Medicine_id = medicine_id;
 		Medicinename = medicine_name;
@@ -27,10 +27,10 @@ public class CreateMedicineRequest {
 		ManufactureDate = manufacture_Date;
 		UnitPrice = unit_Price;
 	}
-//	public Long getMedicine_id() {
+//	public int getMedicine_id() {
 //		return Medicine_id;
 //	}
-//	public void setMedicine_id(Long medicine_id) {
+//	public void setMedicine_id(int medicine_id) {
 //		Medicine_id = medicine_id;
 //	}
 	public String getMedicinename() {
@@ -39,16 +39,16 @@ public class CreateMedicineRequest {
 	public void setMedicinename(String medicine_name) {
 		Medicinename = medicine_name;
 	}
-	public Long getCategoryid() {
+	public int getCategoryid() {
 		return Categoryid;
 	}
-	public void setCategoryid(Long category_id) {
+	public void setCategoryid(int category_id) {
 		Categoryid = category_id;
 	}
-	public Long getMedicineQuantity() {
+	public int getMedicineQuantity() {
 		return MedicineQuantity;
 	}
-	public void setMedicineQuantity( Long medicine_Quantity) {
+	public void setMedicineQuantity( int medicine_Quantity) {
 		MedicineQuantity = medicine_Quantity;
 	}
 	public LocalDate getManufactureDate() {
@@ -57,10 +57,10 @@ public class CreateMedicineRequest {
 	public void setManufactureDate(LocalDate manufacture_Date) {
 		ManufactureDate = manufacture_Date;
 	}
-	public Long getUnitPrice() {
+	public int getUnitPrice() {
 		return UnitPrice;
 	}
-	public void setUnitPrice( Long unit_Price) {
+	public void setUnitPrice( int unit_Price) {
 		UnitPrice = unit_Price;
 	}
 	/**

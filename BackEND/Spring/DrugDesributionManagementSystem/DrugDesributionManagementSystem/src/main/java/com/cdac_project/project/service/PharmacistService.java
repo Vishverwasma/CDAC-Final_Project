@@ -9,7 +9,7 @@ import com.cdac_project.project.request.LoginRequest;
 @Service
 public interface PharmacistService{
 	public  Pharmacist addPharmacist(Pharmacist p)throws PharmacistException;
-	public  Pharmacist findPharmacistById(Long p_ID)throws PharmacistException;
+	public  Pharmacist findPharmacistById(int p_ID)throws PharmacistException;
 	public boolean login(LoginRequest login);
 	
 }

@@ -11,17 +11,18 @@ public class CartMedicine {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cart_id")
-    private Long id;
+    private int id;
 
     @Column(name = "pharmacist_id")
     private int pharmacistId;
 
-    @JsonIgnore
+    @Column(name = "medicine_id")
+    private int medicineId;
+    
+   // @JsonIgnore
     @ManyToOne
     private Cart cart;
 
-    @Column(name = "medicine_id")
-    private int medicineId;
 
     @ManyToOne
     private Medicine medicine;
@@ -30,7 +31,6 @@ public class CartMedicine {
     private int quantity;
 
     private  int price ;
-    
     
 	public Cart getCart() {
 		return cart;
@@ -60,7 +60,7 @@ public class CartMedicine {
 		super();
 	}
 
-	public CartMedicine(Long id, int pharmacistId, int medicineId, int quantity) {
+	public CartMedicine(int id, int pharmacistId, int medicineId, int quantity) {
 		super();
 		this.id = id;
 		this.pharmacistId = pharmacistId;
@@ -70,7 +70,7 @@ public class CartMedicine {
 	
 	
 
-	public CartMedicine(Long id, int pharmacistId, Cart cart, int medicineId, Medicine medicine, int quantity,
+	public CartMedicine(int id, int pharmacistId, Cart cart, int medicineId, Medicine medicine, int quantity,
 			int price) {
 		super();
 		this.id = id;
@@ -82,11 +82,11 @@ public class CartMedicine {
 		this.price = price;
 	}
 
-	public Long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

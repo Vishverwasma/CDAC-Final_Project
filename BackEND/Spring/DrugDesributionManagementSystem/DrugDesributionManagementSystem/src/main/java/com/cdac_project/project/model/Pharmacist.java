@@ -13,7 +13,7 @@ public class Pharmacist {
 	 @Id
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	    @Column(name = "pharmacist_id")
-	    private Long id;
+	    private Integer id;
 
 	    @Column(name = "pharmacist_name")
 	    private String name;
@@ -33,7 +33,7 @@ public class Pharmacist {
 	    @OneToMany(mappedBy = "pharmacist")
 	    private List<Order> orders;
 
-		public Pharmacist(Long id, String name, String licenseNumber, String email, String address, String password) {
+		public Pharmacist(int id, String name, String licenseNumber, String email, String address, String password) {
 			super();
 			this.id = id;
 			this.name = name;
@@ -43,11 +43,11 @@ public class Pharmacist {
 			this.password = password;
 		}
 
-		public Long getId() {
+		public Integer getId() {
 			return id;
 		}
 
-		public void setId(Long id) {
+		public void setId(int id) {
 			this.id = id;
 		}
 

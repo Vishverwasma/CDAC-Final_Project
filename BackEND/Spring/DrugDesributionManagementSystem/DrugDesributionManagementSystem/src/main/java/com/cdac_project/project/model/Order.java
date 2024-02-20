@@ -13,7 +13,7 @@ public class Order {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "order_id")
-    private Long id;
+    private int id;
 
     @OneToMany(mappedBy ="order")
     private List<OrderMedicine> om = new ArrayList<>();
@@ -55,11 +55,11 @@ public class Order {
     private LocalDateTime createdAt;
 
 
-	public Long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -195,7 +195,7 @@ public class Order {
 		this.createdAt = createdAt;
 	}
 
-		public Order(Long id, List<OrderMedicine> om, int medicineId, String medicineName, int pharmacistId,
+		public Order(int id, List<OrderMedicine> om, int medicineId, String medicineName, int pharmacistId,
 			String pharmacistName, Pharmacist pharmacist, Address shippingAddress, int shippingAddress_id, double price,
 			LocalDateTime orderDate, LocalDateTime deliveryDate, int billId, LocalDateTime createdAt) {
 		super();

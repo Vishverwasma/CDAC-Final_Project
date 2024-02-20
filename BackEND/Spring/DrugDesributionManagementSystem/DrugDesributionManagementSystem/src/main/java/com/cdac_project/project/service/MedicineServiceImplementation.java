@@ -3,6 +3,7 @@ package com.cdac_project.project.service;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -45,7 +46,7 @@ public class MedicineServiceImplementation implements MedicineService{
 		MedicineCategory cid = categoryRepository.findByCategoryid(req.getCategoryid());
 		if(cid==null) {
 		MedicineCategory category = new MedicineCategory();
-		category.setCategoryid((long) 1);
+		category.setCategoryid((int) 1);
 		cid=categoryRepository.save(category);	
 		}
 		
@@ -61,7 +62,7 @@ public class MedicineServiceImplementation implements MedicineService{
 	}
 
 	@Override
-	public String deleteMedcine(Long Medicine_ID) throws MedicineException {
+	public String deleteMedicine(int Medicine_ID) throws MedicineException {
 		// TODO Auto-generated method stub
 		
 		Medicine medicine= findMedicineById(Medicine_ID);
@@ -72,7 +73,7 @@ public class MedicineServiceImplementation implements MedicineService{
 	}
 
 	@Override
-	public Medicine updateMedicine(Long Medicine_ID, Medicine req) throws MedicineException {
+	public Medicine updateMedicine(int Medicine_ID, Medicine req) throws MedicineException {
 		// TODO Auto-generated method stub
 
 		Medicine medicine= findMedicineById(Medicine_ID);
@@ -83,7 +84,7 @@ public class MedicineServiceImplementation implements MedicineService{
 	}
 
 	@Override
-	public Medicine findMedicineById(Long Medicine_ID) throws MedicineException {
+	public Medicine findMedicineById(int Medicine_ID) throws MedicineException {
 		// TODO Auto-generated method stub
 		Optional<Medicine> opt = medicineRepository.findById(Medicine_ID);
 		if(opt.isPresent()) {
@@ -94,12 +95,28 @@ public class MedicineServiceImplementation implements MedicineService{
 
 
 	@Override
-	public List<Medicine> findMedicineByCategoryId(Long Category_id) {
+	public List<Medicine> findMedicineByCategoryId(int Category_id) throws Exception{
+		 List<Medicine> medicines = medicineRepository.findAll();
+
+		    List<Medicine> filteredMedicines = medicines.stream()
+		            .filter(medicine -> medicine.getCategoryId().getCategoryid() == Category_id)
+		            .collect(Collectors.toList());
+
+		    if (!filteredMedicines.isEmpty()) {
+		        return filteredMedicines;
+		    }
+		    throw new MedicineException("Medicine not Found with Category-ID : " + Category_id);
+	}
+
+
+	@Override
+	public Page<Medicine> getAllMedicine(int Medicineid, String MedicineName, int CategoryId, int Quantity,
+			LocalDate ManufactureDate, int UnitPrice) throws MedicineException {
 		// TODO Auto-generated method stub
-		
-		
-		
-		return null;
+		 Pageable pageable = PageRequest.of(0, 10); // You can change the page size and number as needed
+		    Page<Medicine> medicines = medicineRepository.findAll(pageable);
+
+		    return medicines;
 	}
 
 }

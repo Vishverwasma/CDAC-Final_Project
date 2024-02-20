@@ -11,7 +11,7 @@ public class Cart {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cart_id")
-    private Long id;
+    private int id;
 
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "pharmacist_id", nullable = false)
@@ -26,7 +26,7 @@ public class Cart {
 	
 	private int totalPrice;
 
-	public Cart(Long id, Pharmacist pharmacist, Set<CartMedicine> cartMedicine, int totalItem, int totalPrice) {
+	public Cart(int id, Pharmacist pharmacist, Set<CartMedicine> cartMedicine, int totalItem, int totalPrice) {
 		super();
 		this.id = id;
 		this.pharmacist = pharmacist;
@@ -35,11 +35,11 @@ public class Cart {
 		this.totalPrice = totalPrice;
 	}
 
-	public Long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

@@ -13,13 +13,13 @@ import com.cdac_project.project.model.Pharmacist;
 public interface OrderService {
 
 	public Order createOrder(Pharmacist user, Address shippingAdress);//User
-	public Order findOrderByld (Long orderld) throws OrderException;//User
-	public List<Order> pharmacistOrdersHistory (Long pharmacistld);//Dist and User
-	public Order placedOrder(Long orderld) throws OrderException;//User
-	public Order confirmedOrder(Long orderld) throws OrderException;//Dist
-	public Order shippedOrder(Long orderld) throws OrderException;//Dist
-	public Order deliveredOrder(Long orderld) throws OrderException;//Dist
-	public Order cancledOrder(Long orderld) throws OrderException;//Dist and User
+	public Order findOrderByld (int orderld) throws OrderException;//User
+	public List<Order> pharmacistOrdersHistory (int pharmacistld);//Dist and User
+	public Order placedOrder(int orderld) throws OrderException;//User
+	public Order confirmedOrder(int orderld) throws OrderException;//Dist
+	public Order shippedOrder(int orderld) throws OrderException;//Dist
+	public Order deliveredOrder(int orderld) throws OrderException;//Dist
+	public Order cancledOrder(int orderld) throws OrderException;//Dist and User
 	public List<Order> getAllOrders() throws OrderException;//User and Dist
-	public void deleteOrder(Long Order_ID) throws OrderException;//User
+	public void deleteOrder(int Order_ID) throws OrderException;//User
 }

@@ -29,7 +29,7 @@ public class PharmacistServiceImplementation implements PharmacistService{
 	
 	
 	@Override
-	public Pharmacist findPharmacistById(Long Id) throws PharmacistException {
+	public Pharmacist findPharmacistById(int Id) throws PharmacistException {
 		// TODO Auto-generated method stub
 		
 		Optional<Pharmacist> pharmacist = pharmacistRepository.findById(Id);

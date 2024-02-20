@@ -8,7 +8,7 @@ public class MedicineCategory {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Category_id")
-    private Long Categoryid;
+    private int categoryid;
 
     @Column(name = "Category_Name")
     private String name;
@@ -18,9 +18,9 @@ public class MedicineCategory {
     
     
     
-	public MedicineCategory(Long categoryid) {
+	public MedicineCategory(int categoryid) {
 		super();
-		Categoryid = categoryid;
+		categoryid = categoryid;
 	}
 
 	public int getMedicineQuantity() {
@@ -31,12 +31,12 @@ public class MedicineCategory {
 		MedicineQuantity = medicineQuantity;
 	}
 
-	public Long getCategoryid() {
-		return Categoryid;
+	public int getCategoryid() {
+		return categoryid;
 	}
 
-	public void setCategoryid(Long Categoryid) {
-		this.Categoryid = Categoryid;
+	public void setCategoryid(int categoryid) {
+		this.categoryid = categoryid;
 	}
 
 	public String getName() {
@@ -47,9 +47,9 @@ public class MedicineCategory {
 		this.name = name;
 	}
 
-	public MedicineCategory(Long Categoryid, String name , int MedicineQuantity) {
+	public MedicineCategory(int categoryid, String name , int MedicineQuantity) {
 		super();
-		this.Categoryid = Categoryid;
+		this.categoryid = categoryid;
 		this.name = name;
 		this.MedicineQuantity = MedicineQuantity;
 	}

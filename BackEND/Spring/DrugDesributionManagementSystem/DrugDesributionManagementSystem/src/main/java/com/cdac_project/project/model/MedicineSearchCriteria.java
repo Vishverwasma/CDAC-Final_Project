@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public class MedicineSearchCriteria {
     private String medicineName;
-    private Long categoryId;
+    private int categoryId;
     private Integer minQuantity;
     private Integer maxQuantity;
     private Double minPrice;
@@ -14,7 +14,7 @@ public class MedicineSearchCriteria {
 	public MedicineSearchCriteria() {
 		super();
 	}
-	public MedicineSearchCriteria(String medicineName, Long categoryId, Integer minQuantity, Integer maxQuantity,
+	public MedicineSearchCriteria(String medicineName, int categoryId, Integer minQuantity, Integer maxQuantity,
 			Double minPrice, Double maxPrice, LocalDate minManufactureDate, LocalDate maxManufactureDate) {
 		super();
 		this.medicineName = medicineName;
@@ -32,10 +32,10 @@ public class MedicineSearchCriteria {
 	public void setMedicineName(String medicineName) {
 		this.medicineName = medicineName;
 	}
-	public Long getCategoryId() {
+	public int getCategoryId() {
 		return categoryId;
 	}
-	public void setCategoryId(Long categoryId) {
+	public void setCategoryId(int categoryId) {
 		this.categoryId = categoryId;
 	}
 	public Integer getMinQuantity() {

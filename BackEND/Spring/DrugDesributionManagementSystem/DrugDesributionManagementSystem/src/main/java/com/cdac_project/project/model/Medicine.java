@@ -13,7 +13,7 @@ public class Medicine {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Medicine_id")
-    private Long id;
+    private int id;
 
     @Column(name = "Medicine_name")
     private String name;
@@ -23,13 +23,13 @@ public class Medicine {
     private MedicineCategory categoryId;
     
     @Column(name = "Medicine_Quantity")
-    private Long quantity;
+    private int quantity;
 
     @Column(name = "Manufacture_date")
     private LocalDate manufactureDate;
 
     @Column(name = "Unit_Price")
-    private Long unitPrice;
+    private int unitPrice;
     
     @ManyToOne
     private Order order;
@@ -40,8 +40,8 @@ public class Medicine {
 
 	
 
-	public Medicine(Long id, String name, MedicineCategory categoryId, Long quantity, LocalDate manufactureDate,
-			Long unitPrice) {
+	public Medicine(int id, String name, MedicineCategory categoryId, int quantity, LocalDate manufactureDate,
+			int unitPrice) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -53,11 +53,11 @@ public class Medicine {
 
 
 
-	public Long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -83,11 +83,11 @@ public class Medicine {
 
 
 
-	public Long getQuantity() {
+	public int getQuantity() {
 		return quantity;
 	}
 
-	public void setQuantity(Long quantity) {
+	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
 
@@ -99,11 +99,11 @@ public class Medicine {
 		this.manufactureDate = manufactureDate;
 	}
 
-	public Long getUnitPrice() {
+	public int getUnitPrice() {
 		return unitPrice;
 	}
 
-	public void setUnitPrice(Long unitPrice) {
+	public void setUnitPrice(int unitPrice) {
 		this.unitPrice = unitPrice;
 	}
 	 

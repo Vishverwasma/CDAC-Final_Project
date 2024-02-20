@@ -5,7 +5,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.cdac_project.project.model.Pharmacist;
 
-public interface PharmacistRepository extends JpaRepository<Pharmacist, Long> {
+public interface PharmacistRepository extends JpaRepository<Pharmacist, Integer> {
     Pharmacist findByEmail(String Email);
 }
 

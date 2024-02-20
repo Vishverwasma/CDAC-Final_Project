@@ -16,12 +16,10 @@ import com.cdac_project.project.request.CreateMedicineRequest;
 public interface MedicineService {
 
 	public Medicine createMedicine(CreateMedicineRequest req);
-	public String deleteMedcine(Long Medicine_ID)throws MedicineException;
-	
-	public Medicine updateMedicine(Long Medicine_ID,Medicine req) throws MedicineException;
-	public Medicine findMedicineById(Long id) throws MedicineException;
-	public List<Medicine> findMedicineByCategoryId(Long Category_id);
-	//public Page<Medicine> getAllMedicine(Long Medicineid,String MedicineName ,Long CategoryId ,Long Quantity, LocalDate ManufactureDate , Long UnitPrice) throws MedicineException;
-	
+	public String deleteMedicine(int Medicine_ID)throws MedicineException;
+	public Medicine updateMedicine(int Medicine_ID,Medicine req) throws MedicineException;
+	public Medicine findMedicineById(int id) throws MedicineException;
+	public List<Medicine> findMedicineByCategoryId(int Category_id) throws Exception;
+	public Page<Medicine> getAllMedicine(int Medicineid,String MedicineName ,int CategoryId ,int Quantity, LocalDate ManufactureDate , int UnitPrice) throws MedicineException;
 	
 }

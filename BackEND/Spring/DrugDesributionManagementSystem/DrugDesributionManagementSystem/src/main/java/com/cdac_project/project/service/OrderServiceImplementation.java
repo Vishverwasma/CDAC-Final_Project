@@ -16,7 +16,9 @@ public class OrderServiceImplementation implements OrderService{
 	private CartRepository cartRepository;
 	private CartMedicineService cartMedicineService;
 	private MedicineService medicineService;
-	
+	public OrderServiceImplementation() {
+        // Default constructor
+    }
 	public OrderServiceImplementation(CartRepository cartRepository, CartMedicineService cartMedicineService,
 			MedicineService medicineService) {
 		super();
@@ -24,7 +26,10 @@ public class OrderServiceImplementation implements OrderService{
 		this.cartMedicineService = cartMedicineService;
 		this.medicineService = medicineService;
 	}
-
+	// Constructor injection
+    public OrderServiceImplementation(CartMedicineService cartMedicineService) {
+        this.cartMedicineService = cartMedicineService;
+    }
 	@Override
 	public Order createOrder(Pharmacist user, Address shippingAdress) {
 		// TODO Auto-generated method stub
@@ -32,43 +37,43 @@ public class OrderServiceImplementation implements OrderService{
 	}
 
 	@Override
-	public Order findOrderByld(Long orderld) throws OrderException {
+	public Order findOrderByld(int orderld) throws OrderException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Order> pharmacistOrdersHistory(Long pharmacistld) {
+	public List<Order> pharmacistOrdersHistory(int pharmacistld) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Order placedOrder(Long orderld) throws OrderException {
+	public Order placedOrder(int orderld) throws OrderException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Order confirmedOrder(Long orderld) throws OrderException {
+	public Order confirmedOrder(int orderld) throws OrderException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Order shippedOrder(Long orderld) throws OrderException {
+	public Order shippedOrder(int orderld) throws OrderException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Order deliveredOrder(Long orderld) throws OrderException {
+	public Order deliveredOrder(int orderld) throws OrderException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Order cancledOrder(Long orderld) throws OrderException {
+	public Order cancledOrder(int orderld) throws OrderException {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -80,7 +85,7 @@ public class OrderServiceImplementation implements OrderService{
 	}
 
 	@Override
-	public void deleteOrder(Long Order_ID) throws OrderException {
+	public void deleteOrder(int Order_ID) throws OrderException {
 		// TODO Auto-generated method stub
 		
 	}

@@ -2,6 +2,7 @@ package com.cdac_project.project.repository;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -12,7 +13,7 @@ import com.cdac_project.project.model.Medicine;
 import com.cdac_project.project.model.MedicineCategory;
 
 @Repository
-public interface MedicineRepository extends JpaRepository<Medicine, Long>{
+public interface MedicineRepository extends JpaRepository<Medicine, Integer>{
 
 
 	@Query("SELECT m FROM Medicine m " +
@@ -24,9 +25,11 @@ public interface MedicineRepository extends JpaRepository<Medicine, Long>{
 		public List<Medicine> filterMedicines(
 		        @Param("Medicine_Name") String Medicine_Name,
 		        @Param("Category_id") Integer Category_id,
-		        @Param("Medicine_Quantity") Long Medicine_Quantity,
+		        @Param("Medicine_Quantity") int Medicine_Quantity,
 		        @Param("Manufacture_Date") LocalDate Manufacture_Date,
-		        @Param("Unit_Price") Long Unit_Price);
+		        @Param("Unit_Price") int Unit_Price);
+
+	public List<Medicine> findByCategoryId(int category_id);
 
 	
 }

@@ -16,7 +16,7 @@ public class Bill {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "bill_id")
-    private Long id;
+    private int id;
 
     @Column(name = "Order_id")
     private int orderId;
@@ -55,7 +55,7 @@ public class Bill {
 		super();
 	}
 
-	public Bill(Long id, int orderId, int pharmacistId, String pharmacistName, int medicineId, String medicineName,
+	public Bill(int id, int orderId, int pharmacistId, String pharmacistName, int medicineId, String medicineName,
 			int quantity, double totalAmount, int discountPrice, int discountedPrice, int toPayAmount,
 			LocalDateTime billingDate) {
 		super();
@@ -73,11 +73,11 @@ public class Bill {
 		this.billingDate = billingDate;
 	}
 
-	public Long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
