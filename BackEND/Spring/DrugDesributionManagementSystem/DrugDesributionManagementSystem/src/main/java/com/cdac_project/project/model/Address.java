@@ -13,10 +13,10 @@ public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "address_id")
-    private Long addressid;
+    private int addressid;
 
     @Column(name = "pharmacist_id")
-    private Long pharmacistid;
+    private int pharmacistid;
     
     @Column(name = "name")
     private String name;
@@ -28,19 +28,19 @@ public class Address {
 		super();
 	}
 
-	public Long getAddressid() {
+	public int getAddressid() {
 		return addressid;
 	}
 
-	public void setAddressid(Long addressid) {
+	public void setAddressid(int addressid) {
 		this.addressid = addressid;
 	}
 
-	public Long getPharmacistid() {
+	public int getPharmacistid() {
 		return pharmacistid;
 	}
 
-	public void setPharmacistid(Long pharmacistid) {
+	public void setPharmacistid(int pharmacistid) {
 		this.pharmacistid = pharmacistid;
 	}
 
@@ -60,7 +60,7 @@ public class Address {
 		FullAddress = fullAddress;
 	}
 
-	public Address(Long addressid, Long pharmacistid, String name, String fullAddress) {
+	public Address(int addressid, int pharmacistid, String name, String fullAddress) {
 		super();
 		this.addressid = addressid;
 		this.pharmacistid = pharmacistid;

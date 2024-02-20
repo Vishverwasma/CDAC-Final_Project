@@ -1,0 +1,41 @@
+.signin-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Adjust as needed */
+  }
+  
+  .signin-box {
+    border: 2px solid #ddd; /* Border styling */
+    padding: 20px; /* Adjust padding as needed */
+    border-radius: 10px; /* Adjust border radius as needed */
+    width: 400px;
+  }
+  
+  .input-group {
+    margin-bottom: 15px;
+  }
+  
+  .input-group label,
+  .input-group input {
+    display: block;
+    margin-bottom: 5px;
+    width: 300px;
+  }
+  
+  .button-group button {
+    margin-right: 10px;
+  }
+  
+  .forgot-password {
+    margin-top: 10px;
+  }
+  
+  .forgot-password a {
+    text-decoration: none;
+    color: #007bff; /* Adjust the color as needed */
+  }
+  
+  .forgot-password a:hover {
+    text-decoration: underline;
+  }
