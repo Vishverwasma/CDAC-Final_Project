@@ -4,7 +4,11 @@ import com.cdac_project.project.exception.OrderException;
 import com.cdac_project.project.model.Address;
 import com.cdac_project.project.model.Order;
 import com.cdac_project.project.model.Pharmacist;
+import com.cdac_project.project.service.CartService;
 import com.cdac_project.project.service.OrderService;
+import com.cdac_project.project.service.PharmacistService;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +20,16 @@ import java.util.List;
 @CrossOrigin(origins = "http://localhost:3000")
 public class OrderController {
 
-    private final OrderService orderService;
+
+    @Autowired
+    private OrderService orderService;
+
+    @Autowired
+    private CartService cartService;
+
+    @Autowired
+    private PharmacistService userService;
+
 
     public OrderController(OrderService orderService) {
         this.orderService = orderService;

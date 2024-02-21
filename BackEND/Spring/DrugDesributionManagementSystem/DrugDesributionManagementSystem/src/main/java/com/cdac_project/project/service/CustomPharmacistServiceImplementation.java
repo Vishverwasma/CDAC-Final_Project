@@ -17,7 +17,7 @@ public class CustomPharmacistServiceImplementation implements UserDetailsService
 
 	//1:30:24
 
-	public CustomPharmacistServiceImplementation(PharmacistRepository pharmacistRepository)throws UsernameNotFoundException{
+	public CustomPharmacistServiceImplementation(PharmacistRepository pharmacistRepository){
 		this.pharmacistRepository=pharmacistRepository;
 	}
 

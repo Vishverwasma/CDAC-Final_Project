@@ -66,13 +66,13 @@ public class ParmacistController {
     }
 
     @PostMapping("/signin")
-    public ResponseEntity<String> login(@RequestBody LoginRequest lr) {
+    public ResponseEntity<AuthResponse> login(@RequestBody LoginRequest lr) {
 
     	System.out.println("In Login Method");
-        //String username = "john@example.com";
-        //String password = "password123";
-        String username = lr.getEmail();
-        String password = lr.getPassword();
+        String username = "john@example.com";
+        String password = "password123";
+        //String username = lr.getEmail();
+        //String password = lr.getPassword();
         System.out.println(username+" ------------------------------------------- "+password);
         
         UserDetails userDetails = customPharmacistService.loadUserByUsername(username);
