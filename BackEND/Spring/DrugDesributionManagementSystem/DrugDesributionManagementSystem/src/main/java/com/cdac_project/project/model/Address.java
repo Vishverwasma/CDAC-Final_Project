@@ -19,7 +19,7 @@ public class Address {
     @Column(name = "pharmacist_id")
     private int pharmacistid;
     
-    @Column(name = "name")
+    @Column(name = "pharmacist_name") 
     private String name;
 
     @Column(name = "Full_Address")
