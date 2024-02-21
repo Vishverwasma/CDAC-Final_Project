@@ -8,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "address")
+@NamedQuery(name = "Address.findByPharmacistid", query = "SELECT a FROM Address a WHERE a.pharmacistid = :pharmacistid")
 public class Address {
 
     @Id

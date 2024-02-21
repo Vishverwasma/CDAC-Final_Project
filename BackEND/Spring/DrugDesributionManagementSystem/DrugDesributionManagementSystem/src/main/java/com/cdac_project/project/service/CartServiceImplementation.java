@@ -10,9 +10,8 @@ import com.cdac_project.project.model.Cart;
 import com.cdac_project.project.model.CartMedicine;
 import com.cdac_project.project.model.Medicine;
 import com.cdac_project.project.model.Pharmacist;
-import com.cdac_project.project.repository.CartMedicineRepository;
 import com.cdac_project.project.repository.CartRepository;
-import com.cdac_project.project.request.AddMedicinerequest;
+import com.cdac_project.project.request.AddMedicineRequest;
 
 @Service
 public class CartServiceImplementation implements CartService {
@@ -39,7 +38,7 @@ public class CartServiceImplementation implements CartService {
 	}
 
 	@Override
-	public String addCartMedicine(int Pharmacistid, AddMedicinerequest req) throws MedicineException, CartException, CartMedicineException, PharmacistException {
+	public String addCartMedicine(int Pharmacistid, AddMedicineRequest req) throws MedicineException, CartException, CartMedicineException, PharmacistException {
 		// TODO Auto-generated method stub
 		
 		Cart cart = cartRepository.findByPharmacistId(Pharmacistid);
@@ -77,6 +76,36 @@ public class CartServiceImplementation implements CartService {
 		cart.setTotalItem(totalMedicine);
 		cart.setTotalPrice(totalPrice);
 		return cartRepository.save(cart);
+	}
+
+	@Override
+	public Cart createCart(int pharmacist) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String addCartMedicine(int Pharmacistid, int medicineId)
+			throws MedicineException, CartException, CartMedicineException, PharmacistException {
+		// Retrieve the Cart entity associated with the pharmacistId
+	    Cart cart = cartRepository.findByPharmacistId(Pharmacistid);
+	    // Retrieve the Medicine entity associated with the medicineId
+	    Medicine medicine = medicineService.findMedicineById(medicineId);
+	    
+	    // Perform any necessary validation or checks
+	    
+	    // Create a new CartMedicine entity and populate its fields
+	    CartMedicine cartMedicine = new CartMedicine();
+	    cartMedicine.setMedicine(medicine);
+	    cartMedicine.setCart(cart);
+	    // Set any other required fields
+	    
+	    // Save the CartMedicine entity to the database
+	    CartMedicine createdCartMedicine = cartMedicineService.createCartMedicine(cartMedicine);
+	    
+	    // Optionally, update the Cart entity with the new CartMedicine
+	    
+	    return "Item added to Cart!";
 	}
 
 	

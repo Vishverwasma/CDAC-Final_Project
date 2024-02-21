@@ -15,7 +15,7 @@ import com.cdac_project.project.request.CreateMedicineRequest;
 import com.cdac_project.project.service.MedicineService;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/medicine")
 public class MedicineController {
 
     private MedicineService medicineService;
