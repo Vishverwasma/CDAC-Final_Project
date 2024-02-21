@@ -44,7 +44,8 @@ public class CartServiceImplementation implements CartService {
 		
 		Cart cart = cartRepository.findByPharmacistId(Pharmacistid);
 		Medicine medicine = medicineService.findMedicineById(req.getMedicineID());
-		CartMedicine isPresent = cartMedicineService.isCartMedicineExist(cart, medicine, Pharmacistid);
+		int quantity = medicine.getQuantity();
+		CartMedicine isPresent = cartMedicineService.isCartMedicineExist(cart, Pharmacistid, medicine,quantity);
 		
 		if(isPresent==null) {
 			CartMedicine cartMedicine = new CartMedicine();

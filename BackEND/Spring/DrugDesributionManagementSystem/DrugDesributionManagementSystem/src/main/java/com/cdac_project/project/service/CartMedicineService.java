@@ -15,8 +15,9 @@ public interface CartMedicineService {
 
 	public CartMedicine createCartMedicine(CartMedicine cartMedicine)throws CartMedicineException, PharmacistException;
 	public  CartMedicine updateCartMedicine(int PharmacistID ,int medsid , CartMedicine cartMedicine) throws CartMedicineException, PharmacistException;
-	public CartMedicine isCartMedicineExist(Cart cart,Medicine medicine,int PID) throws CartException,MedicineException,PharmacistException;
 	public void removeCartMedicine(int pharmacistID , int cartMedicineID) throws CartMedicineException , PharmacistException  ;
 	public CartMedicine findCartMedicineByID(int CartMedicineID)throws CartMedicineException;
+	CartMedicine isCartMedicineExist(Cart cart, int PID, Medicine medicine, int quantity)
+			throws CartException, MedicineException, PharmacistException;
 	
 }

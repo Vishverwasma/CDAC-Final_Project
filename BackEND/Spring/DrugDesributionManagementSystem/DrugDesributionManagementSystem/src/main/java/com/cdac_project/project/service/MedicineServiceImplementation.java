@@ -50,7 +50,7 @@ public class MedicineServiceImplementation implements MedicineService{
 		
 		Medicine medicine=new Medicine();
 		medicine.setName(req.getMedicinename());
-		medicine.setCategory(cid);
+		medicine.setCategoryId(cid);
 		medicine.setQuantity(req.getMedicineQuantity());
 		medicine.setManufactureDate(req.getManufactureDate());
 		medicine.setUnitPrice(req.getUnitPrice());

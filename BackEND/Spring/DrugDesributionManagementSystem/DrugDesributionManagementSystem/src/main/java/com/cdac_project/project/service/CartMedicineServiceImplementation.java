@@ -48,11 +48,11 @@ public class CartMedicineServiceImplementation implements CartMedicineService{
 	
 
 	@Override
-	public CartMedicine isCartMedicineExist(Cart cart, Medicine medicine , int PID)
+	public CartMedicine isCartMedicineExist(Cart cart, int PID, Medicine medicine ,int quantity)
 			throws CartException, MedicineException, PharmacistException {
 		// TODO Auto-generated method stub
 		
-		 CartMedicine cm = cartMedicineRepository.isCartMedicineExist(cart, medicine, PID);
+		 CartMedicine cm = cartMedicineRepository.isCartMedicineExist(cart, PID, medicine,quantity);
 	        return cm;
 	}
 
