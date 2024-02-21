@@ -21,6 +21,7 @@ import com.cdac_project.project.response.AuthResponse;
 import com.cdac_project.project.service.CustomPharmacistServiceImplementation;
 
 @RestController
+//@CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("/pharmacist")
 public class ParmacistController {
 
@@ -37,6 +38,8 @@ public class ParmacistController {
     @PostMapping("/signup")
     public ResponseEntity<AuthResponse> createUserHandler(@RequestBody Pharmacist pharmacist) throws PharmacistException {
 
+    	System.out.println("In Sign-Up Method");
+    	
         String name = pharmacist.getName();
         String License_Number = pharmacist.getLicenseNumber();
         String email = pharmacist.getEmail();
@@ -65,10 +68,16 @@ public class ParmacistController {
     @PostMapping("/signin")
     public ResponseEntity<String> login(@RequestBody LoginRequest lr) {
 
+    	System.out.println("In Login Method");
+        //String username = "john@example.com";
+        //String password = "password123";
         String username = lr.getEmail();
         String password = lr.getPassword();
+        System.out.println(username+" ------------------------------------------- "+password);
+        
         UserDetails userDetails = customPharmacistService.loadUserByUsername(username);
         if (userDetails == null || !password.equals(userDetails.getPassword())) {
+        	
             throw new BadCredentialsException("In-Valid Credentials!");
         }
         AuthResponse authResponse = new AuthResponse();

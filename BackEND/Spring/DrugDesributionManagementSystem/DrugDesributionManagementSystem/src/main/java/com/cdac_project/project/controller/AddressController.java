@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/address")
+@CrossOrigin(origins = "http://localhost:3000")
 public class AddressController {
 
     private final AddressService addressService;
@@ -37,7 +38,7 @@ public class AddressController {
 
     @GetMapping("/pharmacist/{pharmacistId}")
     public ResponseEntity<List<Address>> getAddressesByPharmacistId(@PathVariable int pharmacistId) {
-        List<Address> addresses = addressService.getAddressesByPharmacistId(pharmacistId);
+        List<Address> addresses = addressService.getAddressesByPharmacistid(pharmacistId);
         return ResponseEntity.ok(addresses);
     }
 

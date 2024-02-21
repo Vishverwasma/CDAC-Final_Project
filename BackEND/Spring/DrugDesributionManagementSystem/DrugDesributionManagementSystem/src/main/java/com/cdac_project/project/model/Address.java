@@ -8,7 +8,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "address")
-@NamedQuery(name = "Address.findByPharmacistid", query = "SELECT a FROM Address a WHERE a.pharmacistid = :pharmacistid")
+//@NamedQuery(name = "Address.findByPharmacistid", 
+//query = "SELECT a FROM Address a WHERE a.pharmacist_id = :pharmacistId")
 public class Address {
 
     @Id
@@ -27,6 +28,21 @@ public class Address {
 
 	public Address() {
 		super();
+	}
+
+	public Address(int addressid, int pharmacistid, String name, String fullAddress) {
+		super();
+		this.addressid = addressid;
+		this.pharmacistid = pharmacistid;
+		this.name = name;
+		FullAddress = fullAddress;
+	}
+
+	public Address(int pharmacistid, String name, String fullAddress) {
+		super();
+		this.pharmacistid = pharmacistid;
+		this.name = name;
+		FullAddress = fullAddress;
 	}
 
 	public int getAddressid() {
@@ -59,16 +75,5 @@ public class Address {
 
 	public void setFullAddress(String fullAddress) {
 		FullAddress = fullAddress;
-	}
-
-	public Address(int addressid, int pharmacistid, String name, String fullAddress) {
-		super();
-		this.addressid = addressid;
-		this.pharmacistid = pharmacistid;
-		this.name = name;
-		FullAddress = fullAddress;
-	}
-
-
-    
+	}    
 }

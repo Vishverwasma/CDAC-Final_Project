@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +20,7 @@ import com.cdac_project.project.service.CustomDistributorServiceImplementation;
 
 @RestController
 @RequestMapping("/distributor")
+@CrossOrigin(origins = "http://localhost:3000")
 public class DistributorAuthController {
 
     private DistributorRepository distributorRepository;

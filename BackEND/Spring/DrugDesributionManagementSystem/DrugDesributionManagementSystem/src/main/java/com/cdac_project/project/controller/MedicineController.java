@@ -16,6 +16,7 @@ import com.cdac_project.project.service.MedicineService;
 
 @RestController
 @RequestMapping("/medicine")
+@CrossOrigin(origins = "http://localhost:3000")
 public class MedicineController {
 
     private MedicineService medicineService;

@@ -10,7 +10,7 @@ public interface AddressService {
 
     Address getAddressById(int addressId) throws AddressNotFoundException;
 
-    List<Address> getAddressesByPharmacistId(int pharmacistId);
+    List<Address> getAddressesByPharmacistid(int pharmacistId);
 
     Address updateAddress(int addressId, Address address) throws AddressNotFoundException;
 

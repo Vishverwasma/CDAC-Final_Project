@@ -1013,17 +1013,4 @@ INSERT INTO medicine_db (Medicine_id,Medicine_name, Category_id, Manufacture_dat
 (1012, 'Klonopin', 1, '2021-05-08', 10075, 12),
 (1013, 'Levothyroxine', 2, '2021-05-07', 10085, 11);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
+#delete from Medicine_db where Medicine_id<>0;

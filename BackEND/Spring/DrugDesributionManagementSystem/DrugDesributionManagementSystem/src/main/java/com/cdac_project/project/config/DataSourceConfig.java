@@ -20,7 +20,7 @@ public class DataSourceConfig implements WebMvcConfigurer {
     public DataSource dataSource() {
         return DataSourceBuilder
                 .create()
-                .url("jdbc:mysql://localhost:3306/drug_project_cdac")
+                .url("jdbc:mysql://localhost:3306/practise_during_creation")
                 .username("root")
                 .password("root")
                 .driverClassName("com.mysql.cj.jdbc.Driver")

@@ -33,7 +33,7 @@ public class AddressServiceImplementation implements AddressService {
     }
 
     @Override
-    public List<Address> getAddressesByPharmacistId(int pharmacistId) {
+    public List<Address> getAddressesByPharmacistid(int pharmacistId) {
         return addressRepository.findByPharmacistid(pharmacistId);
     }
 

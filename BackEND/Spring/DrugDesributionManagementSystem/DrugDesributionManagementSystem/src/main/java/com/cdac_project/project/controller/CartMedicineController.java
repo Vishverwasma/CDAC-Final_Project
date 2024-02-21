@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/cart/medicine")
+@CrossOrigin(origins = "http://localhost:3000")
 public class CartMedicineController {
 
     private final CartMedicineService cartMedicineService;

@@ -24,11 +24,8 @@ CREATE TABLE `bill_table` (
   PRIMARY KEY (`bill_id`),
   KEY `ordr_idx` (`Order_id`),
   KEY `bill_table_ibfk_1` (`pharmacist_id`),
-  KEY `bill_table_ibfk_2` (`medicine_id`),
-  CONSTRAINT `bill_table_ibfk_1` FOREIGN KEY (`pharmacist_id`) REFERENCES `pharmacist_db` (`pharmacist_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `bill_table_ibfk_2` FOREIGN KEY (`medicine_id`) REFERENCES `medicine_db` (`Medicine_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `ordr` FOREIGN KEY (`Order_id`) REFERENCES `order_db` (`order_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  KEY `bill_table_ibfk_2` (`medicine_id`)
+ ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 CREATE TABLE `cart_medicine` (
   `cart_id` int NOT NULL AUTO_INCREMENT,
