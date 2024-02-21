@@ -66,7 +66,7 @@ public class ParmacistController {
     public ResponseEntity<String> login(@RequestBody LoginRequest lr) {
 
         String username = lr.getEmail();
-        String password = lr.getPassoword();
+        String password = lr.getPassword();
         UserDetails userDetails = customPharmacistService.loadUserByUsername(username);
         if (userDetails == null || !password.equals(userDetails.getPassword())) {
             throw new BadCredentialsException("In-Valid Credentials!");

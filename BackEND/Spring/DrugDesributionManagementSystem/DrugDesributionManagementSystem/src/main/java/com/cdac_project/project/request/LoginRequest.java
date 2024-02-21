@@ -3,14 +3,14 @@ package com.cdac_project.project.request;
 public class LoginRequest {
 
 	private String Email;
-	private String passoword;
+	private String password;
 	public LoginRequest() {
 		super();
 	}
-	public LoginRequest(String Email, String passoword) {
+	public LoginRequest(String Email, String password) {
 		super();
 		this.Email = Email;
-		this.passoword = passoword;
+		this.password = password;
 	}
 	public String getEmail() {
 		return Email;
@@ -18,11 +18,11 @@ public class LoginRequest {
 	public void setEmail(String Email) {
 		this.Email = Email;
 	}
-	public String getPassoword() {
-		return passoword;
+	public String getPassword() {
+		return password;
 	}
-	public void setPassoword(String passoword) {
-		this.passoword = passoword;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	
 }

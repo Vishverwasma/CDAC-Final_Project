@@ -57,7 +57,7 @@ public class DistributorAuthController {
     public ResponseEntity<AuthResponse> loginUserHandler(@RequestBody LoginRequest loginRequest) {
 
         String username = loginRequest.getEmail();
-        String password = loginRequest.getPassoword();
+        String password = loginRequest.getPassword();
         UserDetails userDetails = customDistributorService.loadUserByUsername(username);
         if (userDetails == null) {
             throw new BadCredentialsException("Invalid Username");

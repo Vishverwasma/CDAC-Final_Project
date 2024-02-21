@@ -51,7 +51,7 @@ public class PharmacistServiceImplementation implements PharmacistService{
 	public boolean login(LoginRequest login) {
 		// TODO Auto-generated method stub
 		Pharmacist p=pharmacistRepository.findByEmail(login.getEmail());
-		if(p!=null && login.getPassoword()==p.getPassword()) {
+		if(p!=null && login.getPassword()==p.getPassword()) {
 		return true;
 		}
 		return false;
