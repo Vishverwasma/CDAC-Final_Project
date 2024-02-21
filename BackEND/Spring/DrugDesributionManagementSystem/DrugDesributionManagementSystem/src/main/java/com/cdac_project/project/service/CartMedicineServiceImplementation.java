@@ -52,7 +52,7 @@ public class CartMedicineServiceImplementation implements CartMedicineService{
 			throws CartException, MedicineException, PharmacistException {
 		// TODO Auto-generated method stub
 		
-		 CartMedicine cm = cartMedicineRepository.isCartMedicineExist(cart, PID, medicine,quantity);
+		 CartMedicine cm = cartMedicineRepository.isCartMedicineExist(cart, medicine, PID,quantity);
 	        return cm;
 	}
 
