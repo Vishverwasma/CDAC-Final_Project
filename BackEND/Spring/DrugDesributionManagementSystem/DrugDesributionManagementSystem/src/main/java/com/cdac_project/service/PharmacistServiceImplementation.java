@@ -49,12 +49,12 @@ public class PharmacistServiceImplementation implements PharmacistService{
 
 	@Override
 	public boolean login(LoginRequest login) {
-		// TODO Auto-generated method stub
-		Pharmacist p=pharmacistRepository.findByEmail(login.getEmail());
-		if(p!=null && login.getPassword()==p.getPassword()) {
-		return true;
-		}
-		return false;
+	    Pharmacist p = pharmacistRepository.findByEmail(login.getEmail());
+	    if (p != null && login.getPassword().equals(p.getPassword())) {
+	        return true;
+	    }
+	    return false;
 	}
+
 
 }

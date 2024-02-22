@@ -5,8 +5,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 
-@SpringBootApplication(exclude = { SecurityAutoConfiguration.class })
-@ComponentScan("com.cdac_project.project.*")
+@SpringBootApplication
+@ComponentScan("com.cdac_project.*")
 public class DrugDesributionManagementSystemApplication {
 
 	public static void main(String[] args) {

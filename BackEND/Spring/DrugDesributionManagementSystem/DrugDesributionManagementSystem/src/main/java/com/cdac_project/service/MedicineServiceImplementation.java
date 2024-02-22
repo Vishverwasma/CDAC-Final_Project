@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -22,19 +23,21 @@ import com.cdac_project.request.CreateMedicineRequest;
 
 @Service
 public class MedicineServiceImplementation implements MedicineService{
-
+	
+	@Autowired
 	private MedicineRepository medicineRepository;
+	@Autowired
 	private MedicineCategoryRepository categoryRepository; 	
 	
 	public MedicineServiceImplementation() {}
 	
 	
-	public MedicineServiceImplementation(MedicineRepository medicineRepository,
-			MedicineCategoryRepository categoryRepository) {
-		super();
-		this.medicineRepository = medicineRepository;
-		this.categoryRepository = categoryRepository;
-	}
+//	public MedicineServiceImplementation(MedicineRepository medicineRepository,
+//			MedicineCategoryRepository categoryRepository) {
+//		super();
+//		this.medicineRepository = medicineRepository;
+//		this.categoryRepository = categoryRepository;
+//	}
 
 
 	@Override
@@ -81,11 +84,9 @@ public class MedicineServiceImplementation implements MedicineService{
 	public Medicine findMedicineById(int Medicine_ID) throws MedicineException {
 		// TODO Auto-generated method stub
 		System.out.println("sddddddddddddddd");
-		Optional<Medicine> opt = medicineRepository.findById(Medicine_ID);
-		if(opt.isPresent()) {
-			return opt.get();
-		}
-		throw new MedicineException("Medicine not Found with ID : "+Medicine_ID);
+		//Optional<Medicine> opt = medicineRepository.findById(Medicine_ID);
+		Optional<Medicine> medicine=medicineRepository.findById(Medicine_ID);
+		return medicine.get();
 	}
 
 

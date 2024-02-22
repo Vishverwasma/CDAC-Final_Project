@@ -2,9 +2,7 @@ package com.cdac_project.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.*;
-import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.core.userdetails.UserDetails;
+
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -55,18 +53,18 @@ public class DistributorAuthController {
 	         return new ResponseEntity<>(authResponse, HttpStatus.CREATED);
     }
 
-    @PostMapping("/signin")
-    public ResponseEntity<AuthResponse> loginUserHandler(@RequestBody LoginRequest loginRequest) {
-
-        String username = loginRequest.getEmail();
-        String password = loginRequest.getPassword();
-        UserDetails userDetails = customDistributorService.loadUserByUsername(username);
-        if (userDetails == null) {
-            throw new BadCredentialsException("Invalid Username");
-        }
-        AuthResponse authResponse = new AuthResponse();
-        authResponse.setMessage("Sign-In Success");
-
-        return new ResponseEntity<>(authResponse, HttpStatus.OK);
-    }
+//    @PostMapping("/signin")
+//    public ResponseEntity<AuthResponse> loginUserHandler(@RequestBody LoginRequest loginRequest) {
+//
+//        String username = loginRequest.getEmail();
+//        String password = loginRequest.getPassword();
+//        UserDetails userDetails = customDistributorService.loadUserByUsername(username);
+//        if (userDetails == null) {
+//            throw new DistributorException("Invalid Username");
+//        }
+//        AuthResponse authResponse = new AuthResponse();
+//        authResponse.setMessage("Sign-In Success");
+//
+//        return new ResponseEntity<>(authResponse, HttpStatus.OK);
+//    }
 }

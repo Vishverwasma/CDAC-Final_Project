@@ -10,7 +10,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 @Table(name = "pharmacist_db", uniqueConstraints = @UniqueConstraint(columnNames = "pharmacist_Email"))
 public class Pharmacist {
-	 @Id
+	    @Id
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	    @Column(name = "pharmacist_id")
 	    private Integer id;

@@ -25,12 +25,14 @@ public class CartController {
 
     @PostMapping("/create/{pharmacistId}")
     public ResponseEntity<String> createCart(@PathVariable int pharmacistId) throws PharmacistException {
+    	System.out.println("In Add of Create Cart Method");
         Cart createdCart = cartService.createCart(pharmacistId);
         return ResponseEntity.ok("Cart created successfully with ID: " + createdCart.getId());
     }
 
     @PostMapping("/addMedicine")
     public ResponseEntity<String> addMedicineToCart(@RequestBody AddMedicineRequest request) {
+    	System.out.println("In Adding medicine of Create Cart Method");
         try {
             String message = cartService.addCartMedicine(request.getpID(), request.getQuantity());
             return ResponseEntity.ok(message);
@@ -41,6 +43,7 @@ public class CartController {
 
     @GetMapping("/{pharmacistId}")
     public ResponseEntity<Cart> getCartByPharmacistId(@PathVariable int pharmacistId) throws PharmacistException {
+    	System.out.println("In get of Create Cart Method by Pharmacist ID");
         Cart cart = cartService.findPharmacistCart(pharmacistId);
         return ResponseEntity.ok(cart);
     }

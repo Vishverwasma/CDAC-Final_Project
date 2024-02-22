@@ -23,12 +23,14 @@ public class AddressController {
 
     @PostMapping("/add")
     public ResponseEntity<Address> addAddress(@RequestBody Address address) {
+    	System.out.println("In Add Address Method");
         Address savedAddress = addressService.addAddress(address);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedAddress);
     }
 
     @GetMapping("/{addressId}")
     public ResponseEntity<Address> getAddressById(@PathVariable int addressId) {
+    	System.out.println("In get Address Method");
         try {
             Address address = addressService.getAddressById(addressId);
             return ResponseEntity.ok(address);
@@ -39,12 +41,14 @@ public class AddressController {
 
     @GetMapping("/pharmacist/{pharmacistId}")
     public ResponseEntity<List<Address>> getAddressesByPharmacistId(@PathVariable int pharmacistId) {
+    	System.out.println("In get Address Method by id");
         List<Address> addresses = addressService.getAddressesByPharmacistid(pharmacistId);
         return ResponseEntity.ok(addresses);
     }
 
     @PutMapping("/update/{addressId}")
     public ResponseEntity<Address> updateAddress(@PathVariable int addressId, @RequestBody Address address) {
+    	System.out.println("In Update Address Method");
         try {
             Address updatedAddress = addressService.updateAddress(addressId, address);
             return ResponseEntity.ok(updatedAddress);
@@ -55,6 +59,7 @@ public class AddressController {
 
     @DeleteMapping("/delete/{addressId}")
     public ResponseEntity<String> deleteAddress(@PathVariable int addressId) {
+    	System.out.println("In delete Address Method");
         try {
             addressService.deleteAddress(addressId);
             return ResponseEntity.ok("Address deleted successfully");

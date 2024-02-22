@@ -7,8 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.core.userdetails.UserDetails;
+
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -38,7 +37,7 @@ public class ParmacistController {
     @PostMapping("/signup")
     public ResponseEntity<AuthResponse> createUserHandler(@RequestBody Pharmacist pharmacist) throws PharmacistException {
 
-    	System.out.println("In Sign-Up Method");
+    	System.out.println("In Sign-Up Method of Pharmacist");
     	
         String name = pharmacist.getName();
         String License_Number = pharmacist.getLicenseNumber();
@@ -65,25 +64,25 @@ public class ParmacistController {
         return new ResponseEntity<AuthResponse>(authResponse, HttpStatus.CREATED);
     }
 
-    @PostMapping("/signin")
-    public ResponseEntity<AuthResponse> login(@RequestBody LoginRequest lr) {
-
-    	System.out.println("In Login Method");
-        String username = "john@example.com";
-        String password = "password123";
-        //String username = lr.getEmail();
-        //String password = lr.getPassword();
-        System.out.println(username+" ------------------------------------------- "+password);
-        
-        UserDetails userDetails = customPharmacistService.loadUserByUsername(username);
-        if (userDetails == null || !password.equals(userDetails.getPassword())) {
-        	
-            throw new BadCredentialsException("In-Valid Credentials!");
-        }
-        AuthResponse authResponse = new AuthResponse();
-        authResponse.setMessage("Sign-In Success");
-
-        return new ResponseEntity(HttpStatus.OK);
-    }
+//    @PostMapping("/signin")
+//    public ResponseEntity<AuthResponse> login(@RequestBody LoginRequest lr) {
+//
+//    	System.out.println("In Login Method of Pharmacist");
+//        //String username = "john@example.com";
+//        //String password = "password123";
+//        String username = lr.getEmail();
+//        String password = lr.getPassword();
+//        System.out.println(username+" ------------------------------------------- "+password);
+//        
+//        UserDetails userDetails = customPharmacistService.loadUserByUsername(username);
+//        if (userDetails == null || !password.equals(userDetails.getPassword())) {
+//        	
+//            throw new BadCredentialsException("In-Valid Credentials!");
+//        }
+//        AuthResponse authResponse = new AuthResponse();
+//        authResponse.setMessage("Sign-In Success");
+//
+//        return new ResponseEntity(HttpStatus.OK);
+//    }
 
 }

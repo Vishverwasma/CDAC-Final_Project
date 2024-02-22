@@ -23,6 +23,7 @@ public class CartMedicineController {
 
     @PostMapping("/create")
     public ResponseEntity<?> createCartMedicine(@RequestBody CreateMedicineRequest request) throws PharmacistException {
+    	System.out.println("In Creat method of CartMedicine");
         try {
             CartMedicine cartMedicine = convertRequestToCartMedicine(request);
             CartMedicine createdMedicine = cartMedicineService.createCartMedicine(cartMedicine);
@@ -36,6 +37,7 @@ public class CartMedicineController {
     public ResponseEntity<?> updateCartMedicine(@PathVariable int pharmacistId,
                                                  @PathVariable int medsId,
                                                  @RequestBody CartMedicine cartMedicine) throws PharmacistException {
+    	System.out.println("In getting 1 method of CartMedicine");
         try {
             CartMedicine updatedMedicine = cartMedicineService.updateCartMedicine(pharmacistId, medsId, cartMedicine);
             return ResponseEntity.ok("Cart Medicine updated successfully");
@@ -47,6 +49,7 @@ public class CartMedicineController {
     @DeleteMapping("/{pharmacistId}/{medsId}")
     public ResponseEntity<?> removeCartMedicine(@PathVariable int pharmacistId,
                                                  @PathVariable int medsId) throws PharmacistException {
+    	System.out.println("In getting 2 method of CartMedicine");
         try {
             cartMedicineService.removeCartMedicine(pharmacistId, medsId);
             return ResponseEntity.ok("Cart Medicine removed successfully");
