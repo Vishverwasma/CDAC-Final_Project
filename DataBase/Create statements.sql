@@ -109,3 +109,13 @@ CREATE TABLE `pharmacist_db` (
   UNIQUE KEY `lnu` (`License_Number`),
   UNIQUE KEY `peu` (`pharmacist_Email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `cart` (
+  `cart_id` int NOT NULL AUTO_INCREMENT,
+  `pharmacist_id` int NOT NULL,
+  `total_item` int DEFAULT NULL,
+  `total_price` int DEFAULT NULL,
+  `totalPrice` int NOT NULL,
+  PRIMARY KEY (`cart_id`),
+  KEY `pharmacist_id` (`pharmacist_id`),
+  CONSTRAINT `cart_ibfk_1` FOREIGN KEY (`pharmacist_id`) REFERENCES `pharmacist_db` (`pharmacist_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;

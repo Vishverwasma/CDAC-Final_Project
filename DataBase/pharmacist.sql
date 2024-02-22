@@ -8,15 +8,6 @@ select * from pharmacist_db;
 select * from medicine_db;
 select * from medicine_category;
 
--- Insert data into pharmacist_db table with auto-incremented pharmacist_id
-INSERT INTO pharmacist_db (pharmacist_name, pharmacist_Email, Password) 
-VALUES
-('John Smith', 'john@example.com', CONCAT('john', 'Karnataka')),
-('Emily Johnson', 'emily@example.com', CONCAT('emily', 'Maharashtra')),
-('Michael Brown', 'michael@example.com', CONCAT('michael', 'Delhi')),
-('Jessica Davis', 'jessica@example.com', CONCAT('jessica', 'Tamil Nadu')),
-('Christopher Wilson', 'chris@example.com', CONCAT('chris', 'Telangana'));
-
 -- Create a trigger to insert data into the address column of pharmacist_db
 DELIMITER //
 CREATE TRIGGER insert_address_trigger AFTER INSERT ON address

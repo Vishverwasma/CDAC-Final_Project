@@ -1,4 +1,6 @@
-INSERT INTO medicine_db (Medicine_id,Medicine_name, Category_id, Manufacture_date, Quantity, Unit_Price) VALUES
+INSERT INTO medicine_db 
+(Medicine_id,Medicine_name, Category_id, Manufacture_date, Quantity, Unit_Price) 
+VALUES
 (1, 'Paracetamol', 1, '2024-02-13', 100, 5),
 (2, 'Ibuprofen', 1, '2024-02-13', 50, 8),
 (3, 'Amoxicillin', 2, '2024-02-12', 30, 15),
@@ -1014,3 +1016,6 @@ INSERT INTO medicine_db (Medicine_id,Medicine_name, Category_id, Manufacture_dat
 (1013, 'Levothyroxine', 2, '2021-05-07', 10085, 11);
 
 #delete from Medicine_db where Medicine_id<>0;
+
+
+
