@@ -1,5 +1,6 @@
 package com.cdac_project.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cdac_project.exception.AddressNotFoundException;
@@ -12,11 +13,14 @@ import java.util.Optional;
 @Service
 public class AddressServiceImplementation implements AddressService {
 
-    private final AddressRepository addressRepository;
+	@Autowired
+    private AddressRepository addressRepository;
 
-    public AddressServiceImplementation(AddressRepository addressRepository) {
-        this.addressRepository = addressRepository;
-    }
+	
+	
+//    public AddressServiceImplementation(AddressRepository addressRepository) {
+//        this.addressRepository = addressRepository;
+//    }
 
     @Override
     public Address addAddress(Address address) {
@@ -26,11 +30,7 @@ public class AddressServiceImplementation implements AddressService {
     @Override
     public Address getAddressById(int addressId) throws AddressNotFoundException {
         Optional<Address> optionalAddress = addressRepository.findById(addressId);
-        if (optionalAddress.isPresent()) {
             return optionalAddress.get();
-        } else {
-            throw new AddressNotFoundException("Address not found with ID: " + addressId);
-        }
     }
 
     @Override
@@ -41,12 +41,8 @@ public class AddressServiceImplementation implements AddressService {
     @Override
     public Address updateAddress(int addressId, Address address) throws AddressNotFoundException {
         Optional<Address> optionalAddress = addressRepository.findById(addressId);
-        if (optionalAddress.isPresent()) {
             address.setAddressid(addressId);
             return addressRepository.save(address);
-        } else {
-            throw new AddressNotFoundException("Address not found with ID: " + addressId);
-        }
     }
 
     @Override

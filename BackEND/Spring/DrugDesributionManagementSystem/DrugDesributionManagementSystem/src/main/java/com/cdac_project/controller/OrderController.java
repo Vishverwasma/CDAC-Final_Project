@@ -57,5 +57,5 @@ public class OrderController {
         return ResponseEntity.ok(orders);
     }
 
-    // Implementation of other endpoints are Fututre Scope : By Vishwas
+    // Implementation of other endpoints are Future Scope : By Vishwas
 }

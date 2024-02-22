@@ -13,10 +13,9 @@ import com.cdac_project.repository.DistributorRepository;
 
 @Service
 public class CustomDistributorServiceImplementation implements UserDetailsService{
-    private DistributorRepository distributorRepository;
+	@Autowired
+	private DistributorRepository distributorRepository;
 
-	//1:30:24
-    @Autowired
 	public CustomDistributorServiceImplementation(DistributorRepository distributorRepository)throws DistributorException{
 		this.distributorRepository=distributorRepository;
 	}

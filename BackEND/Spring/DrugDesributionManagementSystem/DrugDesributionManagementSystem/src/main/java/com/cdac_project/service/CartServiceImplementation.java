@@ -1,5 +1,6 @@
 package com.cdac_project.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cdac_project.exception.CartException;
@@ -16,8 +17,11 @@ import com.cdac_project.request.AddMedicineRequest;
 @Service
 public class CartServiceImplementation implements CartService {
 
+	@Autowired
 	private CartRepository cartRepository;
+	@Autowired
 	private CartMedicineService cartMedicineService;
+	@Autowired
 	private MedicineService medicineService;
 	
 	public CartServiceImplementation(CartRepository cartRepository, CartMedicineService cartMedicineService,

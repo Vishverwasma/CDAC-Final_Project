@@ -43,6 +43,7 @@ public class MedicineServiceImplementation implements MedicineService{
 	@Override
 	public Medicine createMedicine(CreateMedicineRequest req) {
 		// TODO Auto-generated method stub
+		System.out.println("Create Medicine");
 		
 		MedicineCategory cid = categoryRepository.findByCategoryid(req.getCategoryid());
 		if(cid==null) {
@@ -50,7 +51,6 @@ public class MedicineServiceImplementation implements MedicineService{
 		category.setCategoryid((int) 1);
 		cid=categoryRepository.save(category);	
 		}
-		
 		Medicine medicine=new Medicine();
 		medicine.setName(req.getMedicinename());
 		medicine.setCategoryId(cid);
@@ -58,14 +58,13 @@ public class MedicineServiceImplementation implements MedicineService{
 		medicine.setManufactureDate(req.getManufactureDate());
 		medicine.setUnitPrice(req.getUnitPrice());
 		
-		//return medicineRepository.save(medicine);
-		//  or
 		Medicine savedMedicine = medicineRepository.save(medicine);
 		return savedMedicine;
 	}
 
 	@Override
 	public String deleteMedicine(int Medicine_ID) throws MedicineException {
+		System.out.println("Delete Medicine");
 		 Medicine medicine = findMedicineById(Medicine_ID);
 	     medicineRepository.delete(medicine);
 	     return "Medicine Deleted Successfully!";
@@ -73,6 +72,7 @@ public class MedicineServiceImplementation implements MedicineService{
 
 	@Override
 	public Medicine updateMedicine(int Medicine_ID, Medicine req) throws MedicineException {
+		System.out.println("Update Medicine");
 		Medicine medicine= findMedicineById(Medicine_ID);
 		if(req.getQuantity()!=0) {
 			medicine.setQuantity(req.getQuantity());
@@ -83,8 +83,7 @@ public class MedicineServiceImplementation implements MedicineService{
 	@Override
 	public Medicine findMedicineById(int Medicine_ID) throws MedicineException {
 		// TODO Auto-generated method stub
-		System.out.println("sddddddddddddddd");
-		//Optional<Medicine> opt = medicineRepository.findById(Medicine_ID);
+		System.out.println("find by id");
 		Optional<Medicine> medicine=medicineRepository.findById(Medicine_ID);
 		return medicine.get();
 	}
@@ -92,6 +91,7 @@ public class MedicineServiceImplementation implements MedicineService{
 
 	@Override
 	public List<Medicine> findMedicineByCategory(int Category_id) throws Exception{
+		System.out.println("find by Category");
 		 List<Medicine> medicines = medicineRepository.findAll();
 	     List<Medicine> filteredMedicines = medicines.stream()
 	                .filter(medicine -> medicine.getCategoryId().getCategoryid() == Category_id)
@@ -107,6 +107,7 @@ public class MedicineServiceImplementation implements MedicineService{
 	public Page<Medicine> getAllMedicine(int Medicineid, String MedicineName, int CategoryId, int Quantity,
 			LocalDate ManufactureDate, int UnitPrice) throws MedicineException {
 		// TODO Auto-generated method stub
+		System.out.println("Get All Medicine");
 		 Pageable pageable = PageRequest.of(0, 10); // You can change the page size and number as needed
 		 Page<Medicine> medicines = medicineRepository.findAll(pageable);
 
@@ -117,6 +118,8 @@ public class MedicineServiceImplementation implements MedicineService{
 	@Override
 	public Page<Medicine> searchMedicines(MedicineSearchCriteria criteria) {
 		// TODO Auto-generated method stub
+
+		System.out.println("Search Medicine");
 		return medicineRepository.findAll(PageRequest.of(0, 10));
 	}
 

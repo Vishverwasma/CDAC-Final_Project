@@ -11,10 +11,10 @@ import com.cdac_project.repository.PharmacistRepository;
 
 @Service
 public class CustomPharmacistServiceImplementation implements UserDetailsService{
-    private PharmacistRepository pharmacistRepository;
+ 
+	@Autowired
+	private PharmacistRepository pharmacistRepository;
 
- // Constructor for dependency injection
-    @Autowired
 	public CustomPharmacistServiceImplementation(PharmacistRepository pharmacistRepository){
 		this.pharmacistRepository=pharmacistRepository;
 	}

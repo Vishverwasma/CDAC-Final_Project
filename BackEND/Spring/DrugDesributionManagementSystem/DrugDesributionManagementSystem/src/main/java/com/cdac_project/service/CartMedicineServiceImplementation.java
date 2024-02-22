@@ -19,12 +19,14 @@ import com.cdac_project.repository.CartRepository;
 @Service
 public class CartMedicineServiceImplementation implements CartMedicineService{
 
+	@Autowired
 	private CartMedicineRepository cartMedicineRepository;
+	@Autowired
 	private PharmacistService pharmacistService;
+	@Autowired
 	private CartRepository cartRepository;
 	
 	
-	@Autowired
 	public CartMedicineServiceImplementation(CartMedicineRepository cartMedicineRepository,
 			PharmacistService pharmacistService, CartRepository cartRepository) {
 		super();

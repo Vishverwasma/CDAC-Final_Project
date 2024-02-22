@@ -19,9 +19,9 @@ import com.cdac_project.service.MedicineService;
 //@CrossOrigin(origins = "http://localhost:3000")
 public class MedicineController {
 
+	@Autowired
     private MedicineService medicineService;
 
-	@Autowired
 	public MedicineController(MedicineService medicineService) {
 		this.medicineService = medicineService;
 	}
