@@ -14,7 +14,7 @@ import com.cdac_project.service.CartService;
 
 @RestController
 @RequestMapping("/cart")
-//@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "http://localhost:3000")
 public class CartController {
 
     private CartService cartService;

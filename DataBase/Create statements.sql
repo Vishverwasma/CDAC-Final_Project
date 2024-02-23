@@ -119,3 +119,17 @@ CREATE TABLE `cart` (
   KEY `pharmacist_id` (`pharmacist_id`),
   CONSTRAINT `cart_ibfk_1` FOREIGN KEY (`pharmacist_id`) REFERENCES `pharmacist_db` (`pharmacist_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+DELIMITER //
+
+CREATE TRIGGER reset_auto_increment_to_zero
+BEFORE INSERT ON your_table_name
+FOR EACH ROW
+BEGIN
+    IF NEW.auto_increment_column_name IS NULL THEN
+        SET NEW.auto_increment_column_name = 0;
+    END IF;
+END;
+//
+
+DELIMITER ;

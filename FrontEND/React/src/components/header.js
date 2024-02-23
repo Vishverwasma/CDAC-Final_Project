@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../images/logo.jpg';
@@ -20,27 +19,25 @@ const Header = () => {
   const handleSearch = () => {
     console.log(`Searching for ${selectedCategory || 'medicine'}`);
   };
-// Function to handle cart click
-const handleCartClick = () => {
-  // Implement your cart logic here
-  console.log('Cart clicked!');
-  // Optionally, redirect to the cart page using Link
-  // Example: <Link to="/cart">Go to Cart</Link>
-};
+
+  const handleCartClick = () => {
+    console.log('Cart clicked!');
+  };
+
   return (
-    <header>
+    <header className="header">
       <div className="logo-container">
-        <Link to="/">
+        <Link to="/" className="logo-link">
           <img src={logo} alt="Company Logo" className="logo" />
+          <h1 className="company-name">medico</h1>
         </Link>
-        <h1 className="company-name">medico</h1>
       </div>
       <nav className="navigation">
-        <ul>
-          <li><Link to="/">Home</Link></li> {/* Update the Link component */}
-          <li><Link to="#">Medicine</Link></li>
-          <li><Link to="#">Contact</Link></li>
-          <li><Link to="#">About Us</Link></li>
+        <ul className="nav-list">
+          <li><Link to="/" className="nav-link">Home</Link></li>
+          <li><Link to="#" className="nav-link">Medicine</Link></li>
+          <li><Link to="#" className="nav-link">Contact</Link></li>
+          <li><Link to="#" className="nav-link">About Us</Link></li>
         </ul>
       </nav>
 
@@ -52,11 +49,12 @@ const handleCartClick = () => {
               <div className="dropdown-content">
                 <ul>
                   <li onClick={() => handleCategoryChange('Painkiller')}>Painkiller</li>
-                  <li onClick={() => handleCategoryChange('Antibiotics')}>Antiseptic</li>
+                  <li onClick={() => handleCategoryChange('Antiseptic')}>Antiseptic</li>
                   <li onClick={() => handleCategoryChange('Antipyretics')}>Antipyretics</li>
                   <li onClick={() => handleCategoryChange('Antacids')}>Antacids</li>
                   <li onClick={() => handleCategoryChange('Antihistamines')}>Antihistamines</li>
                   <li onClick={() => handleCategoryChange('Anti-inflammatory')}>Anti-inflammatory</li>
+                  <li onClick={() => handleCategoryChange('Emergency')}>Emergency</li>
                   <li onClick={() => handleCategoryChange('Emergency_Condition')}>Emergency_Condition</li>
                 </ul>
               </div>
@@ -68,6 +66,7 @@ const handleCartClick = () => {
           type="text"
           placeholder={`Search for ${selectedCategory || 'medicine'}`}
           readOnly
+          className="search-input"
         />
         <button className="search-button" onClick={handleSearch}>
           Search
@@ -76,14 +75,11 @@ const handleCartClick = () => {
 
       <div className="user-actions">
         <div className="user-signin-signup">
-          <Link to="/signin">Sign in</Link> / <Link to="/signup">Sign up</Link>
+          <Link to="/signin" className="user-link">Sign in</Link> / <Link to="/signup" className="user-link">Sign up</Link>
           <div className="cart-option" onClick={handleCartClick}>
-          {/* Add your cart icon or content here */}
-          <span role="img" aria-label="Cart">🛒</span> 
-          <Link to="#">cart</Link>
-          
-        </div>
-
+            <span role="img" aria-label="Cart" className="cart-icon">🛒</span>
+            <Link to="#" className="cart-link">Cart</Link>
+          </div>
         </div>
       </div>
     </header>

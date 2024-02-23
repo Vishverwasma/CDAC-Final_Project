@@ -2,8 +2,6 @@ package com.cdac_project.controller;
 
 
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,12 +10,12 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cdac_project.exception.PharmacistException;
-import com.cdac_project.model.Address;
 import com.cdac_project.model.Pharmacist;
 import com.cdac_project.repository.PharmacistRepository;
 import com.cdac_project.request.LoginRequest;
 import com.cdac_project.response.AuthResponse;
 import com.cdac_project.service.CustomPharmacistServiceImplementation;
+import com.cdac_project.service.PharmacistServiceImplementation;
 
 @RestController
 //@CrossOrigin(origins = "http://localhost:3000")
@@ -26,6 +24,8 @@ public class ParmacistController {
 
 	@Autowired
     private PharmacistRepository pharmacistRepository;
+    @Autowired
+    private PharmacistServiceImplementation pharmacistService;
     @Autowired
     private CustomPharmacistServiceImplementation customPharmacistService;
 
@@ -64,25 +64,9 @@ public class ParmacistController {
         return new ResponseEntity<AuthResponse>(authResponse, HttpStatus.CREATED);
     }
 
-//    @PostMapping("/signin")
-//    public ResponseEntity<AuthResponse> login(@RequestBody LoginRequest lr) {
-//
-//    	System.out.println("In Login Method of Pharmacist");
-//        //String username = "john@example.com";
-//        //String password = "password123";
-//        String username = lr.getEmail();
-//        String password = lr.getPassword();
-//        System.out.println(username+" ------------------------------------------- "+password);
-//        
-//        UserDetails userDetails = customPharmacistService.loadUserByUsername(username);
-//        if (userDetails == null || !password.equals(userDetails.getPassword())) {
-//        	
-//            throw new BadCredentialsException("In-Valid Credentials!");
-//        }
-//        AuthResponse authResponse = new AuthResponse();
-//        authResponse.setMessage("Sign-In Success");
-//
-//        return new ResponseEntity(HttpStatus.OK);
-//    }
-
+    @PostMapping("/login")
+    public Pharmacist login(@RequestBody LoginRequest request) {
+        return pharmacistService.authenticate(request.getEmail(), request.getPassword());
+    }
+    
 }

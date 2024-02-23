@@ -1,16 +1,13 @@
 package com.cdac_project.service;
 
-import java.util.*;
-
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
 
-import com.cdac_project.model.Pharmacist;
 import com.cdac_project.repository.PharmacistRepository;
 
 @Service
-public class CustomPharmacistServiceImplementation implements UserDetailsService{
+public class CustomPharmacistServiceImplementation{
  
 	@Autowired
 	private PharmacistRepository pharmacistRepository;

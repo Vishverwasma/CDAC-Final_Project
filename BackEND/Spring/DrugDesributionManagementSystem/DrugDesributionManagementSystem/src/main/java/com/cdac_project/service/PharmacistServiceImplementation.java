@@ -27,7 +27,6 @@ public class PharmacistServiceImplementation implements PharmacistService{
 
 	
 	
-	
 	@Override
 	public Pharmacist findPharmacistById(int Id) throws PharmacistException {
 		// TODO Auto-generated method stub
@@ -56,5 +55,17 @@ public class PharmacistServiceImplementation implements PharmacistService{
 	    return false;
 	}
 
+	@Override
+	public Pharmacist authenticate(String Email, String password) {
+		// TODO Auto-generated method stub
+		Pharmacist user = pharmacistRepository.findByEmail(Email);
+        if (user != null && validatePassword(password, user.getPassword())) {
+            return user;
+        }
+        return null;
+	}
+	 private boolean validatePassword(String inputPassword, String storedPassword) {
+	        return inputPassword.equals(storedPassword);
+	    }
 
 }

@@ -3,13 +3,14 @@ package com.cdac_project.service;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.cdac_project.exception.DistributorException;
 import com.cdac_project.model.Distributor;
-import com.cdac_project.model.Pharmacist;
 import com.cdac_project.repository.DistributorRepository;
 import com.cdac_project.request.LoginRequest;
 
+@Service
 public class DistributionServiceImplementation implements DistributorService {
 
 	@Autowired
@@ -45,10 +46,20 @@ public class DistributionServiceImplementation implements DistributorService {
 	@Override
 	public boolean login(LoginRequest login) {
 		Distributor p = distributorRepository.findByEmail(login.getEmail());
-	    if (p != null && login.getPassword().equals(p.getPassword())) {
-	        return true;
+		return p != null && validatePassword(login.getPassword(), p.getPassword());
 	    }
-	    return false;
+
+	@Override
+	public Distributor authenticate(String Email, String password) {
+		// TODO Auto-generated method stub
+		Distributor user = distributorRepository.findByEmail(Email);
+        if (user != null && validatePassword(password, user.getPassword())) {
+            return user;
+        }
+        return null;
+	}
+	 private boolean validatePassword(String inputPassword, String storedPassword) {
+	        return inputPassword.equals(storedPassword);
 	}
 
 }

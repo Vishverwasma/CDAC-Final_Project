@@ -13,4 +13,5 @@ public interface DistributorService{
 	public  Distributor findDistributorById(int Distributor_ID)throws DistributorException;
 	public  Distributor addDistributor(Distributor d)throws DistributorException;
 	public boolean login(LoginRequest login);
+	public Distributor authenticate(String Email, String password);
 }
