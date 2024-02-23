@@ -29,8 +29,15 @@ public class AddressServiceImplementation implements AddressService {
 
     @Override
     public Address getAddressById(int addressId) throws AddressNotFoundException {
-        Optional<Address> optionalAddress = addressRepository.findById(addressId);
+//        Optional<Address> optionalAddress = addressRepository.findById(addressId);
+//            return optionalAddress.get();
+    	
+    	Optional<Address> optionalAddress = addressRepository.findById(addressId);
+        if (optionalAddress.isPresent()) {
             return optionalAddress.get();
+        } else {
+            throw new AddressNotFoundException("Address not found with ID: " + addressId);
+        }
     }
 
     @Override
@@ -40,9 +47,18 @@ public class AddressServiceImplementation implements AddressService {
 
     @Override
     public Address updateAddress(int addressId, Address address) throws AddressNotFoundException {
-        Optional<Address> optionalAddress = addressRepository.findById(addressId);
-            address.setAddressid(addressId);
-            return addressRepository.save(address);
+//        Optional<Address> optionalAddress = addressRepository.findById(addressId);
+//            address.setAddressid(addressId);
+//            return addressRepository.save(address);
+    	
+    	Optional<Address> optionalAddress = addressRepository.findById(addressId);
+        if (optionalAddress.isPresent()) {
+            Address existingAddress = optionalAddress.get();
+            existingAddress.setFullAddress(address.getFullAddress()); // Update Full_Address field
+            return addressRepository.save(existingAddress);
+        } else {
+            throw new AddressNotFoundException("Address not found with ID: " + addressId);
+        }
     }
 
     @Override

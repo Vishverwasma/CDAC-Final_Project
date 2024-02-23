@@ -33,7 +33,7 @@ public class CartMedicineController {
         }
     }
 
-    @PutMapping("/{pharmacistId}/{medsId}")
+    @PutMapping("/put/{pharmacistId}/{medsId}")
     public ResponseEntity<?> updateCartMedicine(@PathVariable int pharmacistId,
                                                  @PathVariable int medsId,
                                                  @RequestBody CartMedicine cartMedicine) throws PharmacistException {
@@ -46,7 +46,7 @@ public class CartMedicineController {
         }
     }
 
-    @DeleteMapping("/{pharmacistId}/{medsId}")
+    @DeleteMapping("/del/{pharmacistId}/{medsId}")
     public ResponseEntity<?> removeCartMedicine(@PathVariable int pharmacistId,
                                                  @PathVariable int medsId) throws PharmacistException {
     	System.out.println("In getting 2 method of CartMedicine");
