@@ -19,7 +19,7 @@ import com.cdac_project.service.PharmacistService;
 
 @RestController
 @RequestMapping("/cart/medicine")
-//@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "http://localhost:3000")
 public class CartMedicineController {
 
     @Autowired

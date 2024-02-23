@@ -18,7 +18,7 @@ import com.cdac_project.service.CustomPharmacistServiceImplementation;
 import com.cdac_project.service.PharmacistServiceImplementation;
 
 @RestController
-//@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("/pharmacist")
 public class ParmacistController {
 

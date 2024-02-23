@@ -16,7 +16,7 @@ import com.cdac_project.service.MedicineService;
 
 @RestController
 @RequestMapping("/medicine")
-//@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "http://localhost:3000")
 public class MedicineController {
 
 	@Autowired
