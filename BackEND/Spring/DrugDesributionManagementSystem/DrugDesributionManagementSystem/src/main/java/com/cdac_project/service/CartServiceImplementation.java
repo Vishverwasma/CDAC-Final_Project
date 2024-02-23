@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cdac_project.exception.CartException;
+import com.cdac_project.exception.CartIsEmptyExcetpion;
 import com.cdac_project.exception.CartMedicineException;
 import com.cdac_project.exception.MedicineException;
 import com.cdac_project.exception.PharmacistException;
@@ -23,6 +24,8 @@ public class CartServiceImplementation implements CartService {
 	private CartMedicineService cartMedicineService;
 	@Autowired
 	private MedicineService medicineService;
+	@Autowired
+	private PharmacistService pharmacistService;
 	
 	public CartServiceImplementation(CartRepository cartRepository, CartMedicineService cartMedicineService,
 			MedicineService medicineService) {
@@ -67,48 +70,52 @@ public class CartServiceImplementation implements CartService {
 	}
 
 	@Override
-	public Cart findPharmacistCart(int p_ID) {
+	public Cart findPharmacistCart(int p_ID) throws  CartException {
 		// TODO Auto-generated method stub
-		
-		Cart cart= cartRepository.findByPharmacistId(p_ID);
-		int totalPrice = 0;
-		int totalMedicine = 0;
-		for(CartMedicine cartMedicine : cart.getCartMedicine()) {
-			totalPrice=totalPrice+cartMedicine.getPrice();
-			totalMedicine=totalMedicine+cartMedicine.getQuantity();			
-		}
-		cart.setTotalItem(totalMedicine);
-		cart.setTotalPrice(totalPrice);
-		return cartRepository.save(cart);
+		try {
+	        Cart cart = cartRepository.findByPharmacistId(p_ID);
+	        if (cart == null) {
+	            System.out.println("Cart is currently empty");
+	            return null;
+	        }
+	        int totalPrice = 0;
+	        int totalMedicine = 0;
+	        for(CartMedicine cartMedicine : cart.getCartMedicine()) {
+	            totalPrice += cartMedicine.getPrice();
+	            totalMedicine += cartMedicine.getQuantity();            
+	        }
+	        cart.setTotalItem(totalMedicine);
+	        cart.setTotalPrice(totalPrice);
+	        cartRepository.save(cart);
+	        return cart;
+	    } catch (Exception e) {
+	        // Handle the exception, log it, and return an appropriate response
+	        System.out.println("Multiple carts found for pharmacist ID: " + p_ID);
+	        return null;
+	    }
 	}
 
 	@Override
-	public Cart createCart(int pharmacist) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	public Cart createCart(int pharmacistId) throws PharmacistException {
+		   Pharmacist pharmacist = pharmacistService.findPharmacistById(pharmacistId);
+		    if (pharmacist == null) {
+		        throw new PharmacistException("Pharmacist not found with ID: " + pharmacistId);
+		    }
+		    Cart cart = new Cart();
+		    cart.setPharmacist(pharmacist);
+		    return cartRepository.save(cart);
+		}
+
 
 	@Override
 	public String addCartMedicine(int Pharmacistid, int medicineId)
 			throws MedicineException, CartException, CartMedicineException, PharmacistException {
-		// Retrieve the Cart entity associated with the pharmacistId
-	    Cart cart = cartRepository.findByPharmacistId(Pharmacistid);
-	    // Retrieve the Medicine entity associated with the medicineId
+		Cart cart = cartRepository.findByPharmacistId(Pharmacistid);
 	    Medicine medicine = medicineService.findMedicineById(medicineId);
-	    
-	    // Perform any necessary validation or checks
-	    
-	    // Create a new CartMedicine entity and populate its fields
 	    CartMedicine cartMedicine = new CartMedicine();
 	    cartMedicine.setMedicine(medicine);
 	    cartMedicine.setCart(cart);
-	    // Set any other required fields
-	    
-	    // Save the CartMedicine entity to the database
 	    CartMedicine createdCartMedicine = cartMedicineService.createCartMedicine(cartMedicine);
-	    
-	    // Optionally, update the Cart entity with the new CartMedicine
-	    
 	    return "Item added to Cart!";
 	}
 

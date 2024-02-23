@@ -6,7 +6,7 @@ import java.util.Set;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "cart")
+@Table(name = "cart", uniqueConstraints = @UniqueConstraint(columnNames = {"pharmacist_id"}))
 public class Cart {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

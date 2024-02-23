@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.cdac_project.exception.CartException;
+import com.cdac_project.exception.CartIsEmptyExcetpion;
 import com.cdac_project.exception.CartMedicineException;
 import com.cdac_project.exception.MedicineException;
 import com.cdac_project.exception.PharmacistException;
@@ -41,8 +42,8 @@ public class CartController {
         }
     }
 
-    @GetMapping("/{pharmacistId}")
-    public ResponseEntity<Cart> getCartByPharmacistId(@PathVariable int pharmacistId) throws PharmacistException {
+    @GetMapping("/get/{pharmacistId}")
+    public ResponseEntity<Cart> getCartByPharmacistId(@PathVariable int pharmacistId) throws PharmacistException, CartException {
     	System.out.println("In get of Create Cart Method by Pharmacist ID");
         Cart cart = cartService.findPharmacistCart(pharmacistId);
         return ResponseEntity.ok(cart);

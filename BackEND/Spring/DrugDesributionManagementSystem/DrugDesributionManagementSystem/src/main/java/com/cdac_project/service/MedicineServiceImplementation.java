@@ -42,24 +42,57 @@ public class MedicineServiceImplementation implements MedicineService{
 
 	@Override
 	public Medicine createMedicine(CreateMedicineRequest req) {
-		// TODO Auto-generated method stub
-		System.out.println("Create Medicine");
+//		// TODO Auto-generated method stub
+//		System.out.println("Create Medicine");
+//		
+//		MedicineCategory cid = categoryRepository.findByCategoryid(req.getCategoryid());
+//		if(cid==null) {
+//		MedicineCategory category = new MedicineCategory();
+//		category.setCategoryid((int) 1);
+//		cid=categoryRepository.save(category);	
+//		}
+//		Medicine medicine=new Medicine();
+//		medicine.setName(req.getMedicinename());
+//		medicine.setCategoryId(cid);
+//		medicine.setQuantity(req.getMedicineQuantity());
+//		medicine.setManufactureDate(req.getManufactureDate());
+//		medicine.setUnitPrice(req.getUnitPrice());
+//		
+//		Medicine savedMedicine = medicineRepository.save(medicine);
+//		return savedMedicine;
 		
-		MedicineCategory cid = categoryRepository.findByCategoryid(req.getCategoryid());
-		if(cid==null) {
-		MedicineCategory category = new MedicineCategory();
-		category.setCategoryid((int) 1);
-		cid=categoryRepository.save(category);	
-		}
-		Medicine medicine=new Medicine();
-		medicine.setName(req.getMedicinename());
-		medicine.setCategoryId(cid);
-		medicine.setQuantity(req.getMedicineQuantity());
-		medicine.setManufactureDate(req.getManufactureDate());
-		medicine.setUnitPrice(req.getUnitPrice());
 		
-		Medicine savedMedicine = medicineRepository.save(medicine);
-		return savedMedicine;
+		 System.out.println("Create Medicine");
+
+		    // Retrieve the category
+		    MedicineCategory category = categoryRepository.findByCategoryid(req.getCategoryid());
+
+		    // If category not found, handle appropriately (e.g., assign default category)
+		    if (category == null) {
+		        // Handle the case where category is not found (e.g., assign a default category)
+		        category = getDefaultCategory();
+		    }
+
+		    // Create a new Medicine instance
+		    Medicine medicine = new Medicine();
+		    medicine.setName(req.getMedicinename());
+		    medicine.setCategoryId(category);
+		    medicine.setQuantity(req.getMedicineQuantity());
+		    medicine.setManufactureDate(req.getManufactureDate());
+		    medicine.setUnitPrice(req.getUnitPrice());
+
+		    // Save the Medicine entity
+		    Medicine savedMedicine = medicineRepository.save(medicine);
+		    return savedMedicine;
+	}
+	
+	// Define a method to provide a default category if needed
+	private MedicineCategory getDefaultCategory() {
+	    // Create a default category or handle as per your application logic
+	    MedicineCategory defaultCategory = new MedicineCategory();
+	    defaultCategory.setCategoryid(1); // Set a default category ID
+	    // Set other properties as needed
+	    return categoryRepository.save(defaultCategory);
 	}
 
 	@Override
