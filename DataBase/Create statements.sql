@@ -9,6 +9,16 @@ CREATE TABLE `address` (
   CONSTRAINT `pharmacist_id` FOREIGN KEY (`pharmacist_id`) REFERENCES `pharmacist_db` (`pharmacist_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+CREATE TABLE order_medicine (
+    order_id INT NOT NULL AUTO_INCREMENT,
+    quantity INT,
+    Medicine_id INT,
+    PRIMARY KEY (order_id),
+    FOREIGN KEY (Medicine_id) REFERENCES medicine_db (Medicine_id)
+);
+
+
+
 CREATE TABLE `bill_table` (
   `bill_id` int NOT NULL AUTO_INCREMENT,
   `Order_id` int NOT NULL,
@@ -21,10 +31,7 @@ CREATE TABLE `bill_table` (
   `Discounted_price` int NOT NULL,
   `To_Pay_Amount` int NOT NULL,
   `Billing_Date` datetime NOT NULL,
-  PRIMARY KEY (`bill_id`),
-  KEY `ordr_idx` (`Order_id`),
-  KEY `bill_table_ibfk_1` (`pharmacist_id`),
-  KEY `bill_table_ibfk_2` (`medicine_id`)
+  PRIMARY KEY (`bill_id`)
  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 CREATE TABLE `cart_medicine` (
@@ -79,14 +86,8 @@ CREATE TABLE `order_db` (
   `Delivery_Date` datetime NOT NULL,
   `bill_id` int NOT NULL,
   `createdAt` datetime NOT NULL,
-  PRIMARY KEY (`order_id`),
-  KEY `order_db_ibfk_1` (`Medicine_id`),
-  KEY `order_db_ibfk_2` (`pharmacist_id`),
-  KEY `order_db_ibfk_3` (`bill_id`),
-  CONSTRAINT `order_db_ibfk_1` FOREIGN KEY (`Medicine_id`) REFERENCES `medicine_db` (`Medicine_id`),
-  CONSTRAINT `order_db_ibfk_2` FOREIGN KEY (`pharmacist_id`) REFERENCES `pharmacist_db` (`pharmacist_id`),
-  CONSTRAINT `order_db_ibfk_3` FOREIGN KEY (`bill_id`) REFERENCES `bill_table` (`bill_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  PRIMARY KEY (`order_id`)
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 CREATE TABLE `order_medicine` (
   `order_id` int NOT NULL AUTO_INCREMENT,

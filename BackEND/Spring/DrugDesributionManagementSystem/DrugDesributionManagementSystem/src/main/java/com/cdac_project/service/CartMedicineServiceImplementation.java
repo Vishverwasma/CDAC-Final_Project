@@ -39,12 +39,17 @@ public class CartMedicineServiceImplementation implements CartMedicineService{
 	public CartMedicine createCartMedicine(CartMedicine cartMedicine)
 			throws CartMedicineException, PharmacistException {
 		// TODO Auto-generated method stub
-		
-		cartMedicine.setQuantity((int) 1);
-        cartMedicine.setPrice(cartMedicine.getMedicine().getUnitPrice() * cartMedicine.getQuantity());
-
-        CartMedicine createdCartMedicine = cartMedicineRepository.save(cartMedicine);
-        return createdCartMedicine;
+//		
+//		cartMedicine.setQuantity((int) 1);
+//        cartMedicine.setPrice(cartMedicine.getMedicine().getUnitPrice() * cartMedicine.getQuantity());
+//
+//        CartMedicine createdCartMedicine = cartMedicineRepository.save(cartMedicine);
+//        return createdCartMedicine;
+		 try {
+	            return cartMedicineRepository.save(cartMedicine);
+	        } catch (Exception e) {
+	            throw new CartMedicineException("Error creating cart medicine: " + e.getMessage());
+	        }
 	}
 
 	

@@ -2,6 +2,8 @@ package com.cdac_project.request;
 
 import java.time.LocalDate;
 
+import javax.persistence.Column;
+
 public class CreateMedicineRequest {
 
 	// private int Medicine_id;
@@ -9,25 +11,41 @@ public class CreateMedicineRequest {
 	 private int Categoryid;
 	 private int MedicineQuantity;
 	 private LocalDate ManufactureDate;
-	 private int UnitPrice;
+	 private int UnitPrice; 
+	 private int pharmacistId;
+     private int medicineId;
 	 
 	 
 	 
 	 
+	public int getPharmacistId() {
+		return pharmacistId;
+	}
+	public void setPharmacistId(int pharmacistId) {
+		this.pharmacistId = pharmacistId;
+	}
+	public int getMedicineId() {
+		return medicineId;
+	}
+	public void setMedicineId(int medicineId) {
+		this.medicineId = medicineId;
+	}
 	public CreateMedicineRequest() {
 		super();
 	}
-	public CreateMedicineRequest( String medicine_name, int category_id, int medicine_Quantity,
-			LocalDate manufacture_Date, int unit_Price) {
-		super();
-		//Medicine_id = medicine_id;
-		Medicinename = medicine_name;
-		Categoryid = category_id;
-		MedicineQuantity = medicine_Quantity;
-		ManufactureDate = manufacture_Date;
-		UnitPrice = unit_Price;
-	}
+	
 
+	public CreateMedicineRequest(String medicinename, int categoryid, int medicineQuantity, LocalDate manufactureDate,
+			int unitPrice, int pharmacistId, int medicineId) {
+		super();
+		Medicinename = medicinename;
+		Categoryid = categoryid;
+		MedicineQuantity = medicineQuantity;
+		ManufactureDate = manufactureDate;
+		UnitPrice = unitPrice;
+		this.pharmacistId = pharmacistId;
+		this.medicineId = medicineId;
+	}
 	public String getMedicinename() {
 		return Medicinename;
 	}

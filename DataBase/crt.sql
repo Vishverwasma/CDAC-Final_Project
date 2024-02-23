@@ -100,3 +100,8 @@ CREATE TABLE `cart` (
   KEY `pharmacist_id` (`pharmacist_id`),
   CONSTRAINT `cart_ibfk_1` FOREIGN KEY (`pharmacist_id`) REFERENCES `pharmacist_db` (`pharmacist_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+ALTER TABLE cart_medicine DROP FOREIGN KEY cart_medicine_ibfk_2;
+ALTER TABLE cart_medicine DROP FOREIGN KEY cart_medicine_ibfk_2;
+ALTER TABLE cart_medicine ADD CONSTRAINT cart_medicine_ibfk_2 FOREIGN KEY (medicine_id) REFERENCES medicine_db (Medicine_id) ON DELETE SET NULL ON UPDATE CASCADE;

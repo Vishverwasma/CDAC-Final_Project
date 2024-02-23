@@ -8,7 +8,6 @@ select * from  medicine_db;
 select * from  order_db;
 select * from  order_medicine;
 select * from pharmacist_db;
-
 use drug_project_cdac;
 use practise_during_creation;
 
@@ -51,3 +50,4 @@ delete from pharmacist_db where pharmacist_id<>0;
 delete from medicine_db where Medicine_id<>0;
 delete from address where address_id<>0;
 delete from medicine_category where Category_id<>0;
+delete from cart where cart_id<>0;

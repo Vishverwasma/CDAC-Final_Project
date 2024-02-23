@@ -2,6 +2,7 @@ package com.cdac_project.service;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
@@ -21,6 +22,6 @@ public interface MedicineService {
 	public Medicine findMedicineById(int id) throws MedicineException;
 	public List<Medicine> findMedicineByCategory(int Category_id) throws Exception;
 	public Page<Medicine> getAllMedicine(int Medicineid,String MedicineName ,int CategoryId ,int Quantity, LocalDate ManufactureDate , int UnitPrice) throws MedicineException;
-
+	public Optional<Medicine> findById(int id);
     public Page<Medicine> searchMedicines(MedicineSearchCriteria criteria);
 }
