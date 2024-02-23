@@ -58,6 +58,40 @@ public class Order {
     @Column(name = "createdAt")
     private LocalDateTime createdAt;
 
+    @Transient
+    public OrderStatus status;
+    
+    
+
+	public OrderStatus getStatus() {
+		return status;
+	}
+
+	public void setStatus(OrderStatus delivered) {
+		this.status = delivered;
+	}
+
+	public Order(int id, List<OrderMedicine> om, int medicineId, String medicineName, int pharmacistId,
+			String pharmacistName, Pharmacist pharmacist, Address shippingAddress, int shippingAddress_id, double price,
+			LocalDateTime orderDate, LocalDateTime deliveryDate, int billId, LocalDateTime createdAt, OrderStatus status) {
+		super();
+		
+		this.id = id;
+		this.om = om;
+		this.medicineId = medicineId;
+		this.medicineName = medicineName;
+		this.pharmacistId = pharmacistId;
+		this.pharmacistName = pharmacistName;
+		this.pharmacist = pharmacist;
+		ShippingAddress = shippingAddress;
+		ShippingAddress_id = shippingAddress_id;
+		this.price = price;
+		this.orderDate = orderDate;
+		this.deliveryDate = deliveryDate;
+		this.billId = billId;
+		this.createdAt = createdAt;
+		this.status = status;
+	}
 
 	public int getId() {
 		return id;

@@ -22,4 +22,7 @@ public interface OrderService {
 	public Order cancledOrder(int orderld) throws OrderException;//Dist and User
 	public List<Order> getAllOrders() throws OrderException;//User and Dist
 	public void deleteOrder(int Order_ID) throws OrderException;//User
+	public Order updateOrder(int orderId, Order updatedOrder) throws OrderException;
+
+	
 }

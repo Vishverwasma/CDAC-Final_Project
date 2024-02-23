@@ -24,4 +24,5 @@ public interface MedicineService {
 	public Page<Medicine> getAllMedicine(int Medicineid,String MedicineName ,int CategoryId ,int Quantity, LocalDate ManufactureDate , int UnitPrice) throws MedicineException;
 	public Optional<Medicine> findById(int id);
     public Page<Medicine> searchMedicines(MedicineSearchCriteria criteria);
+	public Page<Medicine> getAllMedicines(int page, int size);
 }

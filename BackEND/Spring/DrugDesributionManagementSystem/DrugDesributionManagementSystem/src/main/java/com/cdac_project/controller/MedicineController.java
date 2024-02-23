@@ -2,6 +2,7 @@ package com.cdac_project.controller;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -65,4 +66,22 @@ public class MedicineController {
         MedicineSearchCriteria criteria = new MedicineSearchCriteria(medicineName, categoryId, quantity, price, manufactureDate);
         return medicineService.searchMedicines(criteria);
     }
+    
+    @GetMapping("/get-all")
+    public ResponseEntity<Page<Medicine>> getAllMedicines(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size
+    ) {
+        Page<Medicine> medicines = medicineService.getAllMedicines(page, size);
+        return ResponseEntity.ok(medicines);
+    }
+    
+    @GetMapping("/get-by-id/{id}")
+    public ResponseEntity<Medicine> getMedicineById(@PathVariable("id") int id) {
+        Optional<Medicine> medicine = medicineService.findById(id);
+        return medicine.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
+    }
+    
+    
+    
 }

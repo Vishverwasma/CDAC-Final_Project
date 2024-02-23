@@ -105,3 +105,12 @@ CREATE TABLE `cart` (
 ALTER TABLE cart_medicine DROP FOREIGN KEY cart_medicine_ibfk_2;
 ALTER TABLE cart_medicine DROP FOREIGN KEY cart_medicine_ibfk_2;
 ALTER TABLE cart_medicine ADD CONSTRAINT cart_medicine_ibfk_2 FOREIGN KEY (medicine_id) REFERENCES medicine_db (Medicine_id) ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE cart_medicine DROP FOREIGN KEY cart_medicine_ibfk_1;
+
+ALTER TABLE cart_medicine 
+DROP FOREIGN KEY cart_medicine_ibfk_1,
+ADD CONSTRAINT cart_medicine_ibfk_1 
+FOREIGN KEY (pharmacist_id) 
+REFERENCES pharmacist_db(pharmacist_id) 
+ON DELETE CASCADE 
+ON UPDATE CASCADE;

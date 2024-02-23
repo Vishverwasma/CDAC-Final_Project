@@ -34,23 +34,7 @@ public class MedicineServiceImplementation implements MedicineService{
 	@Override
 	public Medicine createMedicine(CreateMedicineRequest req) {
 
-//		System.out.println("Create Medicine");
-//		
-//		MedicineCategory cid = categoryRepository.findByCategoryid(req.getCategoryid());
-//		if(cid==null) {
-//		MedicineCategory category = new MedicineCategory();
-//		category.setCategoryid((int) 1);
-//		cid=categoryRepository.save(category);	
-//		}
-//		Medicine medicine=new Medicine();
-//		medicine.setName(req.getMedicinename());
-//		medicine.setCategoryId(cid);
-//		medicine.setQuantity(req.getMedicineQuantity());
-//		medicine.setManufactureDate(req.getManufactureDate());
-//		medicine.setUnitPrice(req.getUnitPrice());
-//		
-//		Medicine savedMedicine = medicineRepository.save(medicine);
-//		return savedMedicine;
+
 		
 		
 		 System.out.println("Create Medicine");
@@ -139,6 +123,12 @@ public class MedicineServiceImplementation implements MedicineService{
 	@Override
 	public Optional<Medicine> findById(int id) {
         return medicineRepository.findById(id);
+	}
+
+	@Override
+	public Page<Medicine> getAllMedicines(int page, int size) {
+		 Pageable pageable = PageRequest.of(page, size);
+	        return medicineRepository.findAll(pageable);
 	}
 
 }

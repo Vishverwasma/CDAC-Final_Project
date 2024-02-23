@@ -1,0 +1,17 @@
+.draft-order {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  .order-number {
+    color: red;
+  }
+  
+  .order-date {
+    color: #555;
+  }
+  
