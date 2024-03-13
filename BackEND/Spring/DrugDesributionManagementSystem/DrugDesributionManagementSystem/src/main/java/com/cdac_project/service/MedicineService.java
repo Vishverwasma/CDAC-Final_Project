@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import com.cdac_project.exception.MedicineException;
 import com.cdac_project.model.Medicine;
-import com.cdac_project.model.MedicineCategory;
 import com.cdac_project.model.MedicineSearchCriteria;
 import com.cdac_project.request.CreateMedicineRequest;
 

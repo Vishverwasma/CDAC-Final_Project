@@ -21,6 +21,12 @@ values
 ('Vishwas Verma','IB0785BHJ','vishwasv834@Gmail.com','Durg,C.G.','vishwas1234');
 
 
+UPDATE medicine_db
+SET rating = FLOOR(RAND() * 6)
+WHERE Medicine_id > 0;
+
+
+
 Insert into distributor_db ( 
 distributor_name,
 distributorEmail, 
@@ -28,7 +34,10 @@ Password)
 values
 ('Vishwas Verma','vishwasv834@Gmail.com','vishwas1234');
 
-
+INSERT INTO medicine_db 
+(Medicine_id,Medicine_name, Category_id, Manufacture_date, Medicine_Quantity, Unit_Price) 
+VALUES
+(1, 'Paracetamol', 1, '2024-02-13', 100, 5);
 
 DELIMITER //
 

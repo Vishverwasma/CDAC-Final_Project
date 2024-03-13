@@ -1,0 +1,12 @@
+@import url('http://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+    font-family: "Poppins",sans-serif;
+}
+body{
+    background: rgb(244 ,244 ,244);
+    /* Infoway-CDAC RollNumber : 230943120111 */
+}

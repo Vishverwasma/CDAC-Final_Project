@@ -13,6 +13,6 @@ public interface MedicineCategoryRepository extends JpaRepository<MedicineCatego
    	 public  MedicineCategory findByCategoryid(int categoryId);
 	 
 //	 @Query("Select c from medicine_db c Where c.Category_id=:Category_id")
-//	 public MedicineCategory findById
+//	 public MedicineCategory getAllCategories
 //	 (@Param("Category_id") int Category_id);
 }
