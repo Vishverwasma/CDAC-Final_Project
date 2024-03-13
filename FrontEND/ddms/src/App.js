@@ -6,13 +6,13 @@ import Error from './pages/Error';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import User from './pages/User';
-
+import ProtectedRoutes from './Components/ProtectedRoutes';
 function App() {
   return (
     <BrowserRouter>
        <Routes>
         <Route path="/" element={<Home/>} />
-        <Route path="/success" element={<Success/>} />
+        <Route path="/success" element={<ProtectedRoutes element={<Success/>}/>} />
         <Route path="/User" element={<User/>} />
         <Route path="/User/login" element={<Login/>} />
         <Route path="/User/register" element={<Signup/>} />
