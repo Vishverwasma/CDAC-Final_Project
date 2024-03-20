@@ -1,5 +1,6 @@
 package com.cdac_project.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,7 +69,7 @@ public class CartMedicineController {
 
 
 
-    @PutMapping("/put/{pharmacistId}/{medsId}")
+    @PutMapping("/put/{medsId}")
     public ResponseEntity<?> updateCartMedicine(@PathVariable int pharmacistId,
                                                  @PathVariable int medsId,
                                                  @RequestBody CartMedicine cartMedicine) throws PharmacistException {
@@ -81,7 +82,7 @@ public class CartMedicineController {
         }
     }
 
-    @DeleteMapping("/del/{pharmacistId}/{medsId}")
+    @DeleteMapping("/del/{medsId}")
     public ResponseEntity<?> removeCartMedicine(@PathVariable int pharmacistId,
                                                  @PathVariable int medsId) throws PharmacistException {
     	System.out.println("In getting 2 method of CartMedicine");
@@ -110,4 +111,16 @@ public class CartMedicineController {
         }
 		return cartMedicine;
     }
+    
+    @GetMapping("/checkout/{pharmacistId}")
+    public ResponseEntity<?> checkoutCart(@PathVariable int pharmacistId) {
+        try {
+           List<CartMedicine> cartMedicines = cartMedicineService.getCartMedicinesByPharmacistId(pharmacistId);
+           cartMedicineService.clearCart(pharmacistId); 
+           return ResponseEntity.ok("Checkout successful");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Checkout failed: " + e.getMessage());
+        }
+    }
+
 }

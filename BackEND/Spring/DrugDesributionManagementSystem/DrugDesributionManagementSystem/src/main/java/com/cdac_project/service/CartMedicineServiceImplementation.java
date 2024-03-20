@@ -1,5 +1,6 @@
 package com.cdac_project.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -101,5 +102,18 @@ public class CartMedicineServiceImplementation implements CartMedicineService{
 	        }
 	        return cartMedicineRepository.save(meds);
 	    }
+
+	@Override
+	public void clearCart(int pharmacistId) {
+		// TODO Auto-generated method stub
+		 List<CartMedicine> cartMedicines = cartMedicineRepository.findByPharmacistId(pharmacistId);
+	     cartMedicineRepository.deleteAll(cartMedicines);
+	}
+
+	@Override
+	public List<CartMedicine> getCartMedicinesByPharmacistId(int pharmacistId) {
+		// TODO Auto-generated method stub
+        return cartMedicineRepository.findByPharmacistId(pharmacistId);
+	}
 
 }

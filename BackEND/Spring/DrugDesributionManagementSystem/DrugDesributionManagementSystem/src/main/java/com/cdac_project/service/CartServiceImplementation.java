@@ -119,5 +119,17 @@ public class CartServiceImplementation implements CartService {
 	    return "Item added to Cart!";
 	}
 
+	@Override
+	public void clearCart(int pharmacistId) throws CartException {
+		// TODO Auto-generated method stub
+		 Cart cart = cartRepository.findByPharmacistId(pharmacistId);
+	        if (cart == null) {
+	            throw new CartException("Cart not found for pharmacist with ID: " + pharmacistId);
+	        }
+	        cart.getCartMedicine().clear();
+	        
+	        cartRepository.save(cart);
+	}
+
 	
 }

@@ -8,11 +8,17 @@ const cartSlice = createSlice({
     reducers:{
         addToCart:(state,action)=>{
             const existingItem = state.cart.find((item)=>item.id===action.payload.id);
-            if(existingItem){
-                state.cart = state.cart.map((item)=>
-                item.id===action.payload.id?{...item,qty:item.qty+1}:item);
-            }else{
-            state.cart.push(action.payload);
+            //From Here ~>
+            // if(existingItem){
+            //     state.cart = state.cart.map((item)=>item.id===action.payload.id?{...item,qty:item.qty+1}:item);
+            // }else{
+            // state.cart.push(action.payload);
+            // }
+            //Commented above code and Made changes in code on 20/03/2024 at 6:15pm
+            if (existingItem !== -1) {
+                state.cart[existingItem].qty += action.payload.qty;
+            } else {
+                state.cart.push(action.payload);
             }
         },
         removeFromCart: (state,action)=>{
@@ -26,8 +32,11 @@ const cartSlice = createSlice({
         state.cart= state.cart.map((item)=>item.id===action.payload.id?
         {...item,qty: item.qty-1}:item);
     },
+    setCart: (state , action)=>{
+        state.cart = action.payload;
+    },
 },
 });
 
-export const { addToCart , removeFromCart , incrementQty , decrementQty} = cartSlice.actions;
+export const { addToCart , removeFromCart , incrementQty , decrementQty , setCart} = cartSlice.actions;
 export default cartSlice.reducer;

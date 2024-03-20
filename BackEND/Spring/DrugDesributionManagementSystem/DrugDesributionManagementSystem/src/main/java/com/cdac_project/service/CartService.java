@@ -14,4 +14,5 @@ public interface CartService {
 	public String addCartMedicine(int Pharmacistid, int req)throws MedicineException, CartException, CartMedicineException, PharmacistException ;
     public String addCartMedicine(int Pharmacistid, AddMedicineRequest req)throws MedicineException, CartException, CartMedicineException, PharmacistException ;
     public Cart findPharmacistCart(int p_ID)  throws CartException;
+	public void clearCart(int pharmacistId) throws CartException;
 }

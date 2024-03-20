@@ -1,5 +1,7 @@
 package com.cdac_project.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -29,5 +31,7 @@ public interface CartMedicineRepository extends JpaRepository<CartMedicine, Inte
 
 
     CartMedicine findByCartAndMedicineAndPharmacistId(Cart cart, Medicine medicine, int pharmacistId);
+
+	List<CartMedicine> findByPharmacistId(int pharmacistId);
 	
 }

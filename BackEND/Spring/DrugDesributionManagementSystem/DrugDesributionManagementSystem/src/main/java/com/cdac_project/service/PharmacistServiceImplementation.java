@@ -37,7 +37,13 @@ public class PharmacistServiceImplementation implements PharmacistService{
 		}
 		throw new PharmacistException("Pharmacist Not Found With ID : "+Id);
 	}
-
+    //trial : For Get By Email
+	@Override
+	public Pharmacist findPharmacistByEmailId(String email) throws PharmacistException {
+		// TODO Auto-generated method stub
+		Pharmacist pharmacist = pharmacistRepository.findByEmail(email);
+			return pharmacist;
+			}
 
 
 	@Override
@@ -67,5 +73,17 @@ public class PharmacistServiceImplementation implements PharmacistService{
 	 private boolean validatePassword(String inputPassword, String storedPassword) {
 	        return inputPassword.equals(storedPassword);
 	    }
+
+	@Override
+	public boolean changePassword(Pharmacist pharmacist, String newPassword) {
+		// TODO Auto-generated method stub
+		 if (newPassword != null) {
+	            pharmacist.setPassword(newPassword);
+	            return true;
+	        } else {
+	            return false;
+	        }
+	}
+
 
 }

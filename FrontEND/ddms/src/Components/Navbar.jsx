@@ -1,14 +1,52 @@
-import React, { useState } from 'react';
+import axios from "axios";
+import React, { useEffect, useState } from 'react';
 import { GiHamburgerMenu } from "react-icons/gi";
 import { MdClose } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
+import { loginUser, setUser } from "../redux/slices/AuthSlice";
 import { setSearch } from "../redux/slices/SearchSlice";
+import { BASE_URL, getCart } from "../services/helper";
 import NavList from './NavList';
+import { setCart } from "../redux/slices/cartSlice";
+
+
+axios.defaults.withCredentials = true;
+
 
 const Navbar = () => {
     const dispatch = useDispatch();
     const [ toggleNav , setToggleNav ] = useState(false);
-    const auth = useSelector((state) => state.auth.user);
+    const auth = useSelector((state) => state.auth.isAuth);
+    const user = useSelector((state) => state.auth.user);
+    
+    useEffect(() => {
+        if (auth && user && user._id) {
+            getUser(user._id);
+        }
+    }, [auth, user]);
+    
+    const getUser = async()=>{
+    if (auth && user && user._id) {
+        try {
+        const res = await axios.get(`${BASE_URL}/pharmacist/get-user/${user._id}`,{
+            withCredentials: true,
+        });
+        const data = await res.data;
+        dispatch(setUser(data.user));
+        dispatch(loginUser());
+        console.log("auth:", auth);
+        console.log("user:", user);
+        getCart(user).then((data)=>dispatch(setCart(data.cartItems)));
+       }
+       catch (error) {
+        console.error("Error fetching user data:", error);
+       }
+    } else {
+        console.warn("User object or user ID is undefined. Cannot fetch user data.");
+        // Handle case where user object or user ID is undefined
+    }
+};
+
     return (
         <nav className="flex flex-col lg:flex-row justify-between py-3 mx-6 mb-10">
             <div>
