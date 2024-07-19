@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
 import axios from "axios";
-import { BASE_URL } from "../services/helper.js";
+import React, { useState } from 'react';
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
+import { BASE_URL } from "../services/helper.js";
 
 const ResetPassword = () => {
     

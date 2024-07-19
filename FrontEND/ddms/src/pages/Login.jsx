@@ -22,14 +22,19 @@ const Login = () => {
                 email: email,
                 password: password,
             });
-            const data = await res.data;
+            // const data = await res.data;
+            const data = res.data;
             if(res.status===200){
-                dispatch(loginUser(res.data.user));
-                toast.success(res.data.message);
+                dispatch(loginUser(data.user));
+                toast.success(data.message);
                 navigate("/");
             }
         }catch(error){
-            toast.error("Login failed. Please check your credentials.");
+            if (error.response && error.response.status === 401) {
+                toast.error("Invalid email or password");
+            } else {
+                toast.error("Login failed. Please check your credentials.");
+            }
         }
     };
     
